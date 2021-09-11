@@ -4,11 +4,14 @@
   "description": "",
   "scripts": {
     "setup": "./setup.sh",
-    "test": "echo \"Warning: no test specified\" && exit 0",
-    "pretest": "./preparation.sh",
+    "build": "echo \"Warning: no test specified\" && exit 0",
+    "prebuild": "./preparation.sh",
     "output": "ts-node-script output.ts"
   },
   "keywords": [],
+  "bugs": {
+    "url": "https://github.com/askirmas/dotenvs/labels/bug"
+  },
   "author": "Andrii Kirmas <kirmas@phystech.edu>",
   "license": "MIT",
   "devDependencies": {
