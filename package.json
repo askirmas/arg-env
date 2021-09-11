@@ -4,8 +4,7 @@
   "description": "",
   "scripts": {
     "setup": "./setup.sh",
-    "build": "echo \"Warning: no test specified\" && exit 0",
-    "prebuild": "./preparation.sh",
+    "build": "./build.sh",
     "output": "ts-node-script output.ts"
   },
   "keywords": [],
