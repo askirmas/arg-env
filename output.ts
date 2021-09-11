@@ -1,6 +1,6 @@
 import { execSync } from "child_process"
 import { config } from "dotenv"
-import { readFileSync, writeFileSync } from "fs"
+import { appendFileSync, readFileSync, writeFileSync } from "fs"
 
 type AssocCell = string|undefined|null
 type AssocRecord = Record<string, AssocCell>
@@ -19,10 +19,14 @@ export { }
 
 function main() {
   const collected = collect()
-  , md = array2md(json2Table(collected))
+  , table = json2Table(collected)
+  , md1 = array2md(table)
+  , md2 = array2md(transpose(table))
 
   writeFileSync(`${outputDir}.json`, JSON.stringify(collected, null, 2))
-  writeFileSync(`${outputDir}.md`, md)
+  writeFileSync(`${outputDir}.md`, md1)
+  appendFileSync(`${outputDir}.md`, "\n\n")
+  appendFileSync(`${outputDir}.md`, md2)
 }
 
 function collect() {
@@ -47,6 +51,20 @@ function collect() {
   map["dotenv"] = $assign({}, ...[globalEnvPath, envPath].map(path => config({path}).parsed))
 
   return map
+}
+
+function transpose<Cell>(source: Cell[][]) {
+  const $return: Cell[][] = []
+
+  for (let i = 0; i < source.length; i++) {
+    const sourceRow = source[i]
+    for (let j = 0; j < sourceRow.length; j++) {
+      const next = $return[j] = $return[j] ?? []
+      next[i] = sourceRow[j]
+    }
+  }
+
+  return $return
 }
 
 function json2Table(source: AssocTable) {
