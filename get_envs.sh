@@ -12,6 +12,8 @@ cat docker-compose.yml \
 | grep --color=never -E '^\s*-\s[^=\s]+=.*$' \
 | perl -pe 's/^[\s-]+//' \
 >> ../docker/.env
+# cat docker-compose.yml | grep --after-context=100 --color=never 'environment:'
+# cat docker-compose.yml | pcregrep --color=never -o '(?<=environm)ent:.*$'
 
 cd ..
 
@@ -59,5 +61,6 @@ docker-compose run --rm injected > ../output/docker_compose-injected
 
 cd ..
 
-# cat docker-compose.yml | grep --after-context=100 --color=never 'environment:'
-# cat docker-compose.yml | pcregrep --color=never -o '(?<=environm)ent:.*$'
+# JS stuff
+./js/dotenv.js docker-compose/.env docker/.env > output/dotenv
+./js/dotenv-expand.js docker-compose/.env docker/.env > output/dotenv-expanded

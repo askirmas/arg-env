@@ -13,7 +13,7 @@
     "editor.insertSpaces": true,
     "editor.renderIndentGuides": true,
     "editor.tabSize": 2,
-    "editor.useTabStops": false,
+    "editor.useTabStops": true,
     "json.format.enable": false,
     "json.schemaDownload.enable": true,
     "typescript.format.enable": true,
@@ -35,6 +35,11 @@
       "editor.codeActionsOnSave": {
         "source.fixAll": true
       }
+    },
+    "yaml.schemas": {
+      "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": [
+        "**/*docker-compose*yml"
+      ]
     }
   }
 }

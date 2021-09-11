@@ -1,14 +1,11 @@
 import { execSync } from "child_process"
-import { config } from "dotenv"
 import { appendFileSync, readFileSync, writeFileSync } from "fs"
 
 type AssocCell = string|undefined|null
 type AssocRecord = Record<string, AssocCell>
 type AssocTable = Record<string, AssocRecord>
 
-const {assign: $assign} = Object
-, outputDir = "./output"
-, globalEnvPath = "./docker-compose/.env"
+const outputDir = "./output"
 , envPath = "./docker/.env"
 , eol = /[\n\r]+/
 
@@ -47,8 +44,6 @@ function collect() {
       fileMap[variable] = value
     }
   }
-
-  map["dotenv"] = $assign({}, ...[globalEnvPath, envPath].map(path => config({path}).parsed))
 
   return map
 }
