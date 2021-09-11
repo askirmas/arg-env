@@ -1,0 +1,37 @@
+version: "3.8"
+services: 
+  env_file:
+    env_file: ../docker/.env
+    build:
+      context: ../docker
+      dockerfile: Dockerfile
+  env_injected:
+    build:
+      context: ../docker
+      dockerfile: Dockerfile.injected
+  injected:
+    build:
+      context: ../docker
+      dockerfile: Dockerfile
+    environment: 
+      - STR_DIRECT=direct
+      - STR_SINGLE='single'
+      - STR_DOUBLE="double"
+      - STR_BACKTICK=`backtick`
+      - STR_EMPTY=
+      - VAR="Variable"
+      - VAR_DIRECT=$VAR
+      - VAR_SINGLE='$VAR'
+      - VAR_DOUBLE="$VAR"
+      - VAR_BACKTICK=`$VAR`
+      - VAR_CURVE=${VAR}
+      - VAR_CURVE_DOUBLE="${VAR}"
+      - VAR_BRACKETS=($VAR)
+      - VAR_DOUBLE=${VAR}${VAR}
+      - VAR_SETTED1=${XXX:-$VAR}
+      - VAR_SETTED2=${STR_EMPTY:-$VAR}
+      - VAR_DEFAULT_DEFAULT=${XXX:-${YYY:-VAR}}
+      # - VAR_SHOULD1=${VAR?err1}
+      # - VAR_SHOULD2=${VAR?:err1}
+      # - VAR_SHOULD3=${STR_EMPTY?err2} 
+      # - VAR_SHOULD4=${STR_EMPTY?:err2} 

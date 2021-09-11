@@ -1,0 +1,17 @@
+STR_DIRECT=direct
+STR_SINGLE=single
+STR_DOUBLE=double
+STR_BACKTICK=`backtick`
+STR_EMPTY=
+VAR=VAR
+VAR_DIRECT=Variable
+VAR_SINGLE=$VAR
+VAR_DOUBLE=VariableVariable
+VAR_BACKTICK=`Variable`
+VAR_CURVE=Variable
+VAR_CURVE_DOUBLE=Variable
+VAR_BRACKETS=(Variable)
+VAR_DOUBLE=VariableVariable
+VAR_SETTED1=Variable
+VAR_SETTED2=Variable
+VAR_DEFAULT_DEFAULT=VAR

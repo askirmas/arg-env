@@ -1,0 +1,27 @@
+# Generated
+FROM alpine:3
+
+RUN apk update && apk upgrade && apk add bash
+
+WORKDIR /app
+COPY echo_envs.sh .env ./
+
+ENV STR_DIRECT=direct
+ENV STR_SINGLE='single'
+ENV STR_DOUBLE="double"
+ENV STR_BACKTICK=`backtick`
+ENV STR_EMPTY=
+ENV VAR="Variable"
+ENV VAR_DIRECT=$VAR
+ENV VAR_SINGLE='$VAR'
+ENV VAR_DOUBLE="$VAR"
+ENV VAR_BACKTICK=`$VAR`
+ENV VAR_CURVE=${VAR}
+ENV VAR_CURVE_DOUBLE="${VAR}"
+ENV VAR_BRACKETS=($VAR)
+ENV VAR_DOUBLE=${VAR}${VAR}
+ENV VAR_SETTED1=${XXX:-$VAR}
+ENV VAR_SETTED2=${STR_EMPTY:-$VAR}
+ENV VAR_DEFAULT_DEFAULT=${XXX:-${YYY:-VAR}}
+
+CMD ./echo_envs.sh
