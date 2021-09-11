@@ -38,10 +38,10 @@ do
 done < Dockerfile
 
 docker build --tag env_file --file Dockerfile .
-docker run --rm --env-file=../docker-compose/.env --env-file=.env env_file > "../output/docker env_file"
+docker run --rm --env-file=../docker-compose/.env --env-file=.env env_file > "../output/docker --env_file"
 
 docker build --tag env_injected --file Dockerfile.injected .
-docker run --rm --env GLOBAL=global env_injected > "../output/docker env_injected"
+docker run --rm --env GLOBAL=global env_injected > "../output/docker ENV"
 
 cd ..
 
@@ -50,17 +50,17 @@ cd ..
 cd docker-compose || exit 1
 
 docker-compose build env_file
-docker-compose run --rm env_file > "../output/docker-compose env_file"
+docker-compose run --rm env_file > "../output/docker-compose --env_file"
 
 docker-compose build env_injected
-docker-compose run --rm env_injected > "../output/docker-compose env_injected"
+docker-compose run --rm env_injected > "../output/docker-compose ENV"
 
 docker-compose build injected
-docker-compose run --rm injected > "../output/docker-compose injected"
+docker-compose run --rm injected > "../output/docker-compose environment:"
 
 # Other executions give the same result
 docker compose build env_file
-docker compose run --rm env_file > "../output/docker compose env_file"
+docker compose run --rm env_file > "../output/docker compose --env_file"
 
 cd ..
 
