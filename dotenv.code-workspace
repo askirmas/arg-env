@@ -4,5 +4,21 @@
 			"path": "."
 		}
   ],
-  "settings": {}
+  "settings": {
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+      // "source.fixAll": true
+    },
+    "editor.insertSpaces": true,
+    "editor.useTabStops": false,
+    "editor.renderIndentGuides": true,
+    "editor.codeLens": true,
+    "typescript.preferences.quoteStyle": "double",
+    "typescript.format.semicolons": "remove",
+    "typescript.implementationsCodeLens.enabled": true,
+    "json.format.enable": false,
+    "json.schemaDownload.enable": true
+  }
 }

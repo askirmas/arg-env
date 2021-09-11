@@ -1,4 +1,5 @@
 #!/bin/bash
+# check `env` output
 VARS=(
   $(cat .env \
   | grep --color=never '^[A-Za-z]' \
