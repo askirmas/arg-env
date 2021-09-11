@@ -43,7 +43,7 @@ services:
       - VAR_DEFAULT2=${STR_EMPTY:-$VAR1}
       # - VAR_DEFAULT3=${XXX:$VAR1}
       # - VAR_DEFAULT4=${STR_EMPTY:$VAR1}
-      - VAR_DEFAULT_DEFAULT=${XXX:-${YYY:-VAR1}}
+      - VAR_DEFAULT_DEFAULT=${XXX:-${YYY:-$VAR1}}
       # - VAR_SHOULD1=${VAR1?err1}
       # - VAR_SHOULD2=${VAR1?:err1}
       # - VAR_SHOULD3=${STR_EMPTY?err2}

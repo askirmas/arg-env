@@ -21,9 +21,10 @@
     "VAR_REPEAT=": "$VAR1$VAR1",
     "VAR_DEFAULT1=": "${XXX:-$VAR1}",
     "VAR_DEFAULT2=": "${STR_EMPTY:-$VAR1}",
-    "VAR_DEFAULT_DEFAULT=": "${XXX:-${YYY:-VAR1}}"
+    "VAR_DEFAULT_DEFAULT=": "${XXX:-${YYY:-$VAR1}}"
   },
   "docker compose env_file": {
+    "GLOBAL=": "",
     "FROM_GLOBAL1=": "",
     "FROM_GLOBAL2=": "",
     "FROM_GLOBAL3=": "",
@@ -45,9 +46,10 @@
     "VAR_REPEAT=": "var1var1",
     "VAR_DEFAULT1=": ":-var1",
     "VAR_DEFAULT2=": ":-var1",
-    "VAR_DEFAULT_DEFAULT=": ":-:-VAR1}}"
+    "VAR_DEFAULT_DEFAULT=": ":-:-var1}"
   },
   "docker env_file": {
+    "GLOBAL=": "Global",
     "FROM_GLOBAL1=": "$GLOBAL",
     "FROM_GLOBAL2=": "${GLOBAL}",
     "FROM_GLOBAL3=": "\"$GLOBAL\"",
@@ -69,9 +71,10 @@
     "VAR_REPEAT=": "$VAR1$VAR1",
     "VAR_DEFAULT1=": "${XXX:-$VAR1}",
     "VAR_DEFAULT2=": "${STR_EMPTY:-$VAR1}",
-    "VAR_DEFAULT_DEFAULT=": "${XXX:-${YYY:-VAR1}}"
+    "VAR_DEFAULT_DEFAULT=": "${XXX:-${YYY:-$VAR1}}"
   },
   "docker env_injected": {
+    "GLOBAL=": "global",
     "FROM_GLOBAL1=": "",
     "FROM_GLOBAL2=": "",
     "FROM_GLOBAL3=": "",
@@ -93,9 +96,10 @@
     "VAR_REPEAT=": "var1var1",
     "VAR_DEFAULT1=": "var1",
     "VAR_DEFAULT2=": "var1",
-    "VAR_DEFAULT_DEFAULT=": "VAR1"
+    "VAR_DEFAULT_DEFAULT=": "var1"
   },
   "docker-compose env_file": {
+    "GLOBAL=": "",
     "FROM_GLOBAL1=": "$GLOBAL",
     "FROM_GLOBAL2=": "",
     "FROM_GLOBAL3=": "$GLOBAL",
@@ -117,9 +121,10 @@
     "VAR_REPEAT=": "$VAR1$VAR1",
     "VAR_DEFAULT1=": "$VAR1",
     "VAR_DEFAULT2=": "",
-    "VAR_DEFAULT_DEFAULT=": "${YYY:-VAR1}"
+    "VAR_DEFAULT_DEFAULT=": "${YYY:-$VAR1}"
   },
   "docker-compose env_injected": {
+    "GLOBAL=": "",
     "FROM_GLOBAL1=": "",
     "FROM_GLOBAL2=": "",
     "FROM_GLOBAL3=": "",
@@ -141,9 +146,10 @@
     "VAR_REPEAT=": "var1var1",
     "VAR_DEFAULT1=": "var1",
     "VAR_DEFAULT2=": "var1",
-    "VAR_DEFAULT_DEFAULT=": "VAR1"
+    "VAR_DEFAULT_DEFAULT=": "var1"
   },
   "docker-compose injected": {
+    "GLOBAL=": "",
     "FROM_GLOBAL1=": "Global",
     "FROM_GLOBAL2=": "Global",
     "FROM_GLOBAL3=": "\"Global\"",
@@ -165,7 +171,7 @@
     "VAR_REPEAT=": "",
     "VAR_DEFAULT1=": "$VAR1",
     "VAR_DEFAULT2=": "$VAR1",
-    "VAR_DEFAULT_DEFAULT=": "${YYY:-VAR1}"
+    "VAR_DEFAULT_DEFAULT=": "${YYY:-$VAR1}"
   },
   "dotenv": {
     "GLOBAL=": "Global",
@@ -190,7 +196,7 @@
     "VAR_REPEAT=": "$VAR1$VAR1",
     "VAR_DEFAULT1=": "${XXX:-$VAR1}",
     "VAR_DEFAULT2=": "${STR_EMPTY:-$VAR1}",
-    "VAR_DEFAULT_DEFAULT=": "${XXX:-${YYY:-VAR1}}"
+    "VAR_DEFAULT_DEFAULT=": "${XXX:-${YYY:-$VAR1}}"
   },
   "dotenv expanded": {
     "GLOBAL=": "Global",
@@ -215,6 +221,6 @@
     "VAR_REPEAT=": "var1var1",
     "VAR_DEFAULT1=": ":-var1",
     "VAR_DEFAULT2=": ":-var1",
-    "VAR_DEFAULT_DEFAULT=": ":-:-VAR1}}"
+    "VAR_DEFAULT_DEFAULT=": ":-:-var1}"
   }
 }

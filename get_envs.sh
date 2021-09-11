@@ -39,12 +39,11 @@ do
   fi
 done < Dockerfile
 
-# `run --env GLOBAL=global` changes nothing
 docker build --tag env_file --file Dockerfile .
 docker run --rm --env-file=../docker-compose/.env --env-file=.env env_file > "../output/docker env_file"
 
 docker build --tag env_injected --file Dockerfile.injected .
-docker run --rm env_injected > "../output/docker env_injected"
+docker run --rm --env GLOBAL=global env_injected > "../output/docker env_injected"
 
 cd ..
 
