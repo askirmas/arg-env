@@ -25,10 +25,10 @@ INJECTION=$(cat .env \
 )
 
 echo "# Generated" > Dockerfile.injected
-while read line 
+while read line
 do
   if [ "$line" != "# <envfile>" ]
-  then 
+  then
     echo "$line" >> Dockerfile.injected
   else
     echo "$INJECTION" >> Dockerfile.injected
@@ -59,5 +59,5 @@ docker-compose run --rm injected > ../output/docker_compose-injected
 
 cd ..
 
-# cat docker-compose.yml | grep --after-context=100 --color=never 'environment:'  
+# cat docker-compose.yml | grep --after-context=100 --color=never 'environment:'
 # cat docker-compose.yml | pcregrep --color=never -o '(?<=environm)ent:.*$'

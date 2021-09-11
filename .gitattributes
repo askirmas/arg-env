@@ -1,0 +1,3 @@
+*.sh text
+*.ts text
+# * text eol=lf

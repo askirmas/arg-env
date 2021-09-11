@@ -1,6 +1,7 @@
 [core]
 	symlinks = true
 	filemode = true
+  eol = lf
   autocrlf = input
 	editor = code --wait
 [push]
