@@ -5,14 +5,16 @@
 | STR_DOUBLE | "double" | "double" | double | double | double | "double" | double |
 | STR_BACKTICK | \`backtick\` | \`backtick\` | \`backtick\` | \`backtick\` | \`backtick\` | \`backtick\` | \`backtick\` |
 | STR_EMPTY |  |  |  |  |  |  |  |
-| VAR | "Variable" | VAR | VAR | VAR | VAR | VAR | Variable |
-| VAR_DIRECT | $VAR | $VAR | Variable | $VAR | Variable |  | $VAR |
-| VAR_SINGLE | '$VAR' | '$VAR' | $VAR | $VAR | $VAR | '' | $VAR |
-| VAR_DOUBLE | ${VAR}${VAR} | ${VAR}${VAR} | VariableVariable | VariableVariable | VariableVariable |  | ${VAR}${VAR} |
-| VAR_BACKTICK | \`$VAR\` | \`$VAR\` | \`Variable\` | \`$VAR\` | \`Variable\` | \`\` | \`$VAR\` |
-| VAR_CURVE | ${VAR} | ${VAR} | Variable | Variable | Variable |  | ${VAR} |
-| VAR_CURVE_DOUBLE | "${VAR}" | "${VAR}" | Variable | Variable | Variable | "" | ${VAR} |
-| VAR_BRACKETS | ($VAR) | ($VAR) | (Variable) | ($VAR) | (Variable) | () | ($VAR) |
-| VAR_SETTED1 | ${XXX:-$VAR} | ${XXX:-$VAR} | Variable | $VAR | Variable | $VAR | ${XXX:-$VAR} |
-| VAR_SETTED2 | ${STR_EMPTY:-$VAR} | ${STR_EMPTY:-$VAR} | Variable |  | Variable | $VAR | ${STR_EMPTY:-$VAR} |
-| VAR_DEFAULT_DEFAULT | ${XXX:-${YYY:-VAR}} | ${XXX:-${YYY:-VAR}} | VAR | ${YYY:-VAR} | VAR | ${YYY:-VAR} | ${XXX:-${YYY:-VAR}} |
+| VAR | "var" | VAR | VAR | VAR | VAR | VAR | var |
+| VAR1 | "var1" | "var1" | var1 | var1 | var1 | "var1" | var1 |
+| DOLLAR_ESCAPE | $$VAR1 | $$VAR1 | VAR1 | $$VAR1 | VAR1 | $VAR1 | $$VAR1 |
+| VAR_DIRECT | $VAR1 | $VAR1 | var1 | $VAR1 | var1 |  | $VAR1 |
+| VAR_SINGLE | '$VAR1' | '$VAR1' | $VAR1 | $VAR1 | $VAR1 | '' | $VAR1 |
+| VAR_DOUBLE | $VAR1$VAR1 | $VAR1$VAR1 | var1var1 | $VAR1$VAR1 | var1var1 |  | $VAR1$VAR1 |
+| VAR_CURVE | ${VAR1} | ${VAR1} | var1 | var1 | var1 |  | ${VAR1} |
+| VAR_CURVE_SINGLE | '${VAR1}' | '${VAR1}' | ${VAR1} | var1 | ${VAR1} | '' | ${VAR1} |
+| VAR_CURVE_DOUBLE | "${VAR1}" | "${VAR1}" | var1 | var1 | var1 | "" | ${VAR1} |
+| VAR_DOUBLE_CURVE | ${VAR1}${VAR1} | ${VAR1}${VAR1} | var1var1 | var1var1 | var1var1 |  | ${VAR1}${VAR1} |
+| VAR_SETTED1 | ${XXX:-$VAR1} | ${XXX:-$VAR1} | var1 | $VAR1 | var1 | $VAR1 | ${XXX:-$VAR1} |
+| VAR_SETTED2 | ${STR_EMPTY:-$VAR1} | ${STR_EMPTY:-$VAR1} | var1 |  | var1 | $VAR1 | ${STR_EMPTY:-$VAR1} |
+| VAR_DEFAULT_DEFAULT | ${XXX:-${YYY:-VAR1}} | ${XXX:-${YYY:-VAR1}} | VAR1 | ${YYY:-VAR1} | VAR1 | ${YYY:-VAR1} | ${XXX:-${YYY:-VAR1}} |

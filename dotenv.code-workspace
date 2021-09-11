@@ -14,7 +14,7 @@
     "editor.insertSpaces": true,
     "editor.useTabStops": false,
     "editor.renderIndentGuides": true,
-    "editor.codeLens": true,
+    "editor.codeLens": false,
     "typescript.preferences.quoteStyle": "double",
     "typescript.format.semicolons": "remove",
     "typescript.implementationsCodeLens.enabled": true,

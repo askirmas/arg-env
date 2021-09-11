@@ -1,6 +1,7 @@
 #!/bin/bash
 # check `env` output
 VARS=(
+  #'GLOBAL'
   $(cat .env \
   | grep --color=never '^[A-Za-z]' \
   | sed 's/=.*//')
