@@ -41,7 +41,7 @@ function collect() {
     for (let l = 0; l < content.length; l++) {
       const [,variable, value = null] = content[l].match(/([^=]+)=?(.*)/) ?? []
 
-      fileMap[variable] = value
+      fileMap[`${variable}=`] = value
     }
   }
 
@@ -67,7 +67,7 @@ function json2Table(source: AssocTable) {
   , interTable: Record<string, AssocCell[]> = {}
 
   for (const key in source) {
-    const index = headers.push(key)
+    const index = headers.push(`**${key}**`)
     , record = source[key]
 
     for (const prop in interTable)
@@ -84,7 +84,7 @@ function json2Table(source: AssocTable) {
 
   const table = [([undefined] as AssocCell[]).concat(headers)]
   for (const prop in interTable)
-   table.push(([prop] as AssocCell[]).concat(interTable[prop]))
+   table.push(([`**${prop}**`] as AssocCell[]).concat(interTable[prop]))
 
   return table
 }
