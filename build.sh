@@ -1,3 +1,4 @@
 #!/bin/bash
-./get_envs.sh \
+./output_md-start.sh \
+&& ./get_envs.sh \
 && npm run output \
