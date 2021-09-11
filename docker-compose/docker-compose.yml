@@ -25,6 +25,7 @@ services:
       - FROM_GLOBAL4="${GLOBAL}"
       - STR_DIRECT=direct
       - STR_SINGLE='single'
+      # - STR_BASH=$'bash-like' - breaks compose
       - STR_DOUBLE="double"
       - STR_BACKTICK=`backtick`
       - STR_EMPTY=
