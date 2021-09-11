@@ -1,5 +1,5 @@
 version: "3.8"
-services: 
+services:
   env_file:
     env_file:
       # - ../docker-compose/.env - no changes
@@ -18,7 +18,7 @@ services:
     build:
       context: ../docker
       dockerfile: Dockerfile
-    environment: 
+    environment:
       - FROM_GLOBAL1=$GLOBAL
       - FROM_GLOBAL2=${GLOBAL}
       - FROM_GLOBAL3="$GLOBAL"
@@ -45,5 +45,5 @@ services:
       - VAR_DEFAULT_DEFAULT=${XXX:-${YYY:-VAR1}}
       # - VAR_SHOULD1=${VAR1?err1}
       # - VAR_SHOULD2=${VAR1?:err1}
-      # - VAR_SHOULD3=${STR_EMPTY?err2} 
-      # - VAR_SHOULD4=${STR_EMPTY?:err2} 
+      # - VAR_SHOULD3=${STR_EMPTY?err2}
+      # - VAR_SHOULD4=${STR_EMPTY?:err2}

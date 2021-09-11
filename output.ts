@@ -12,7 +12,7 @@ const {assign: $assign} = Object
 , envPath = "./docker/.env"
 , eol = /[\n\r]+/
 
-if (!module.parent) 
+if (!module.parent)
   main()
 
 export { }
@@ -20,8 +20,8 @@ export { }
 function main() {
   const collected = collect()
   , table = json2Table(collected)
-  , md1 = array2md(table)
-  , md2 = array2md(transpose(table))
+  , md2 = array2md(table)
+  , md1 = array2md(transpose(table))
 
   writeFileSync(`${outputDir}.json`, JSON.stringify(collected, null, 2))
   writeFileSync(`${outputDir}.md`, md1)
@@ -43,7 +43,7 @@ function collect() {
 
     for (let l = 0; l < content.length; l++) {
       const [,variable, value = null] = content[l].match(/([^=]+)=?(.*)/) ?? []
-      
+
       fileMap[variable] = value
     }
   }
@@ -78,7 +78,7 @@ function json2Table(source: AssocTable) {
     for (const prop in interTable)
       (interTable[prop] = interTable[prop] ?? [])
       .push(record[prop])
-    
+
     for (const prop in record) {
       if (prop in interTable)
         continue
