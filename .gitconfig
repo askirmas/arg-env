@@ -1,6 +1,7 @@
 [core]
 	symlinks = true
 	filemode = true
+  autocrlf = true
 	editor = code --wait
 [push]
 	recurseSubmodules = on-demand
