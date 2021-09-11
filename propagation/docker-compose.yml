@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  envs_propagation:
+    build:
+      context: ./docker
+    env_file:
+      - ./docker/.env.file1
+      - ./docker/.env.file2
+    environment:
+      - ENV_ROOT_1
+      - ENV_ROOT_CATCH_EXPORT
+      - ENV_INLINE="environment"
+      - ENV_INLINE_CATCH_FILE1=${ENV_INTERNAL_FILE1}
+      - ENV_INLINE_CATCH_ROOT2=${ENV_ROOT_2}
+      - ENV_INLINE_CATCH_EXPORT=${ENV_EXPORT}
