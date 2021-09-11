@@ -1,12 +1,14 @@
 import { execSync } from "child_process"
-import { parse } from "dotenv"
+import { config } from "dotenv"
 import { readFileSync, writeFileSync } from "fs"
 
 type AssocCell = string|undefined|null
 type AssocRecord = Record<string, AssocCell>
 type AssocTable = Record<string, AssocRecord>
 
-const outputDir = "./output"
+const {assign: $assign} = Object
+, outputDir = "./output"
+, globalEnvPath = "./docker-compose/.env"
 , envPath = "./docker/.env"
 , eol = /[\n\r]+/
 
@@ -42,7 +44,7 @@ function collect() {
     }
   }
 
-  map["dotenv"] = parse(readFileSync(envPath))
+  map["dotenv"] = $assign({}, ...[globalEnvPath, envPath].map(path => config({path}).parsed))
 
   return map
 }
@@ -90,7 +92,7 @@ function array2md(array: AssocCell[][]) {
 function row2md(arr: AssocCell[]) {
   return `| ${
     arr
-    .map(x => x && x.replace(/([`])/g, "\\$1"))
+    .map(x => x?.replace?.(/([`])/g, "\\$1") ?? x)
     .map(x =>
       x === undefined ? "-"
       : x === null ? "null"

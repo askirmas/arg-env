@@ -5,7 +5,8 @@
   "scripts": {
     "setup": "./setup.sh",
     "test": "echo \"Warning: no test specified\" && exit 0",
-    "pretest": "./preparation.sh"
+    "pretest": "./preparation.sh",
+    "output": "ts-node-script output.ts"
   },
   "keywords": [],
   "author": "Andrii Kirmas <kirmas@phystech.edu>",
