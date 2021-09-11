@@ -1,13 +1,14 @@
 import { execSync } from "child_process"
 import { appendFileSync, readFileSync, writeFileSync } from "fs"
+import {
+  envPath,
+  eol,
+  outputDir
+} from "./config"
 
 type AssocCell = string|undefined|null
 type AssocRecord = Record<string, AssocCell>
 type AssocTable = Record<string, AssocRecord>
-
-const outputDir = "./output"
-, envPath = "./docker/.env"
-, eol = /[\n\r]+/
 
 if (!module.parent)
   main()
