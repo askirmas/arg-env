@@ -23,7 +23,7 @@
     "VAR_DEFAULT2": "${STR_EMPTY:-$VAR1}",
     "VAR_DEFAULT_DEFAULT": "${XXX:-${YYY:-VAR1}}"
   },
-  "docker-env_file": {
+  "docker env_file": {
     "FROM_GLOBAL1": "$GLOBAL",
     "FROM_GLOBAL2": "${GLOBAL}",
     "FROM_GLOBAL3": "\"$GLOBAL\"",
@@ -47,7 +47,7 @@
     "VAR_DEFAULT2": "${STR_EMPTY:-$VAR1}",
     "VAR_DEFAULT_DEFAULT": "${XXX:-${YYY:-VAR1}}"
   },
-  "docker-env_injected": {
+  "docker env_injected": {
     "FROM_GLOBAL1": "",
     "FROM_GLOBAL2": "",
     "FROM_GLOBAL3": "",
@@ -71,7 +71,7 @@
     "VAR_DEFAULT2": "var1",
     "VAR_DEFAULT_DEFAULT": "VAR1"
   },
-  "docker_compose-env_file": {
+  "docker-compose env_file": {
     "FROM_GLOBAL1": "$GLOBAL",
     "FROM_GLOBAL2": "",
     "FROM_GLOBAL3": "$GLOBAL",
@@ -95,7 +95,7 @@
     "VAR_DEFAULT2": "",
     "VAR_DEFAULT_DEFAULT": "${YYY:-VAR1}"
   },
-  "docker_compose-env_injected": {
+  "docker-compose env_injected": {
     "FROM_GLOBAL1": "",
     "FROM_GLOBAL2": "",
     "FROM_GLOBAL3": "",
@@ -119,7 +119,7 @@
     "VAR_DEFAULT2": "var1",
     "VAR_DEFAULT_DEFAULT": "VAR1"
   },
-  "docker_compose-injected": {
+  "docker-compose injected": {
     "FROM_GLOBAL1": "Global",
     "FROM_GLOBAL2": "Global",
     "FROM_GLOBAL3": "\"Global\"",
@@ -168,7 +168,7 @@
     "VAR_DEFAULT2": "${STR_EMPTY:-$VAR1}",
     "VAR_DEFAULT_DEFAULT": "${XXX:-${YYY:-VAR1}}"
   },
-  "dotenv-expanded": {
+  "dotenv expanded": {
     "GLOBAL": "Global",
     "FROM_GLOBAL1": "Global",
     "FROM_GLOBAL2": "Global",

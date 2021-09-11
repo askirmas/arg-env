@@ -39,10 +39,10 @@ done < Dockerfile
 
 # `run --env GLOBAL=global` changes nothing
 docker build --tag env_file --file Dockerfile .
-docker run --rm --env-file=../docker-compose/.env --env-file=.env env_file > ../output/docker-env_file
+docker run --rm --env-file=../docker-compose/.env --env-file=.env env_file > "../output/docker env_file"
 
 docker build --tag env_injected --file Dockerfile.injected .
-docker run --rm env_injected > ../output/docker-env_injected
+docker run --rm env_injected > "../output/docker env_injected"
 
 cd ..
 
@@ -51,16 +51,16 @@ cd ..
 cd docker-compose || exit 1
 
 docker-compose build env_file
-docker-compose run --rm env_file > ../output/docker_compose-env_file
+docker-compose run --rm env_file > "../output/docker-compose env_file"
 
 docker-compose build env_injected
-docker-compose run --rm env_injected > ../output/docker_compose-env_injected
+docker-compose run --rm env_injected > "../output/docker-compose env_injected"
 
 docker-compose build injected
-docker-compose run --rm injected > ../output/docker_compose-injected
+docker-compose run --rm injected > "../output/docker-compose injected"
 
 cd ..
 
 # JS stuff
-./js/dotenv.js docker-compose/.env docker/.env > output/dotenv
-./js/dotenv-expand.js docker-compose/.env docker/.env > output/dotenv-expanded
+./js/dotenv.js docker-compose/.env docker/.env > "output/dotenv"
+./js/dotenv-expand.js docker-compose/.env docker/.env > "output/dotenv expanded"
