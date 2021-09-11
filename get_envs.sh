@@ -61,6 +61,10 @@ docker-compose run --rm env_injected > "../output/docker-compose env_injected"
 docker-compose build injected
 docker-compose run --rm injected > "../output/docker-compose injected"
 
+# Other executions give the same result
+docker compose build env_file
+docker compose run --rm env_file > "../output/docker compose env_file"
+
 cd ..
 
 # JS stuff
