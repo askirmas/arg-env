@@ -1,4 +1,6 @@
 #!/bin/bash
+printf "$(docker --version)\n$(docker-compose --version)\n$(uname -rs)\n" > output.md
+
 rm -rf output
 mkdir output
 

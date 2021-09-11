@@ -21,7 +21,7 @@ function main() {
   , md1 = array2md(transpose(table))
 
   writeFileSync(`${outputDir}.json`, JSON.stringify(collected, null, 2))
-  writeFileSync(`${outputDir}.md`, md1)
+  appendFileSync(`${outputDir}.md`, md1)
   appendFileSync(`${outputDir}.md`, "\n\n")
   appendFileSync(`${outputDir}.md`, md2)
 }
