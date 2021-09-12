@@ -5,7 +5,10 @@
   "scripts": {
     "setup": "./setup.sh",
     "build": "./build.sh",
-    "output": "ts-node-script output.ts"
+    "output": "ts-node-script output.ts",
+    "dev": "npm run jest -- --watch --coverage=false",
+    "test": "npm run jest",
+    "jest": "jest --config=jest.config.json --runInBand"
   },
   "keywords": [],
   "bugs": {
@@ -15,10 +18,13 @@
   "license": "MIT",
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
+    "@types/jest": "^27.0.1",
     "@types/node": "^16.9.1",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
     "git-hooks-wrapper": "^0.7.1",
+    "jest": "^27.1.1",
+    "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   }

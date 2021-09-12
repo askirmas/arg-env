@@ -1,0 +1,6 @@
+{
+  "STR_DIRECT=direct":       {"STR_DIRECT": "direct"},
+  "STR_SINGLE='single'":     {"STR_SINGLE": "single"},
+  "STR_DOUBLE=\"double\"":   {"STR_DOUBLE": "double"},
+  "STR_BACKTICK=`backtick`": {"STR_BACKTICK": "`backtick`"}
+}
