@@ -1,0 +1,18 @@
+{
+  "display": "Build",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "declarationDir": "types",
+    "outDir": "dist",
+    "tsBuildInfoFile": ".tsbuildinfo"
+  },
+  "include": [
+    "src/*.ts"
+  ],
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
+}

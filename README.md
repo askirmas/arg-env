@@ -3,7 +3,7 @@
 Experiments with `.env` stuff
 
 - Setup: `./setup.sh`
-- Build: `./build.sh`
+- Build: ~~`./prebuild.sh`~~ `npm run build`
    - Launch commands: [./get_envs.sh](./get_envs.sh)
 - Result: [output.md](./output.md)
 

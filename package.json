@@ -4,13 +4,16 @@
   "description": "",
   "scripts": {
     "setup": "./setup.sh",
-    "build": "./build.sh",
+    "build": "npm run compile",
+    "prebuild": "./prebuild.sh",
+    "compile": "rm -rf dist; tsc --project tsconfig.build.json",
     "output": "ts-node-script output.ts",
     "dev": "npm run jest -- --watch --coverage=false",
     "test": "npm run jest",
     "pretest": "jest --clearCache",
     "jest": "jest --config=jest.config.json --runInBand",
-    "release": "np"
+    "release": "np",
+    "cli": "node --require=./arg-env --max-old-space-size=256 ./arg-env --env-file=\"xxx yyy\""
   },
   "keywords": [],
   "bugs": {
@@ -41,6 +44,9 @@
     "2fa": false
   },
   "files": [
-    "src/parse.ts"
-  ]
+    "dist",
+    "types"
+  ],
+  "types": "types",
+  "main": "dist"
 }

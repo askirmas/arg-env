@@ -5,7 +5,6 @@ import {
 import {
   parse
 } from "./parse"
-import type { Env } from "./types"
 
 type Reader = (path: string) => string | Buffer
 

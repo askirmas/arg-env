@@ -1,5 +1,3 @@
-import type { Env } from "./types"
-
 const argStart = 2
 , argPrefix = "--env-file="
 , {"length": argPrefixLength} = argPrefix
