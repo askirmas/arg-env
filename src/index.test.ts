@@ -27,13 +27,14 @@ describe(parse.name, () => {
   })
 
   describe("Tricky", () => {
+    it(...p("SPEC_ONELINE_1=1; SPEC_ONELINE_2=1", {"SPEC_ONELINE_1": "1; SPEC_ONELINE_2=1"}))
+    it(...p("SPEC_SUBSHELL=$(echo 1)"           , {"SPEC_SUBSHELL": "$(echo 1)"}))
     it(...p(" SPEC_LEADING_SPACE=space"         , {"SPEC_LEADING_SPACE": "space"}))
     it(...p("- SPEC_LEADING_DASH=WARN"          , {}))
     it(...p("$SPEC_LEADING_DOLLAR=l$"           , {"$SPEC_LEADING_DOLLAR": "l$"}))
     it(...p("1SPEC_LEADING_DIGIT=1"             , {"1SPEC_LEADING_DIGIT": "1"}))
     it(...p("=SPEC_LEADING_EQ=WARN"             , {}))
-    it(...p("SPEC_ONELINE_1=1; SPEC_ONELINE_2=1", {"SPEC_ONELINE_1": "1; SPEC_ONELINE_2=1"}))
-    it(...p("SPEC_SUBSHELL=$(echo 1)"           , {"SPEC_SUBSHELL": "$(echo 1)"}))
+    it.skip(...p('"SPEC_ESCAPE": "\""'               , {"SPEC_ESCAPE": "\""}))
   })
 
   describe("Not standard names", () => {
@@ -44,21 +45,21 @@ describe(parse.name, () => {
     it(...p("SPEC_\\==`=`"            , {"SPEC_\\": "=`=`"}))
   })
 
-  // describe("Reuse", () => {
-  //   it(...p([
-  //     "SPEC_ASSIGNED=assigned",
-  //     "SPEC_REUSE_DIRECT=$SPEC_ASSIGNED",
-  //     "SPEC_REUSE_SINGLE='$SPEC_ASSIGNED'",
-  //     "SPEC_REUSE_DOUBLE=\"$SPEC_ASSIGNED\"",
-  //     "SPEC_REUSE_CURVES=${SPEC_ASSIGNED}"
-  //   ], {
-  //     "SPEC_ASSIGNED": "assigned",
-  //     "SPEC_REUSE_DIRECT": "$SPEC_ASSIGNED",
-  //     "SPEC_REUSE_SINGLE": "$SPEC_ASSIGNED",
-  //     "SPEC_REUSE_DOUBLE": "$SPEC_ASSIGNED",
-  //     "SPEC_REUSE_CURVES": "assigned"
-  //   }))
-  // })
+  describe("Reuse", () => {
+    it(...p([
+      "SPEC_ASSIGNED=assigned",
+      "SPEC_REUSE_DIRECT=$SPEC_ASSIGNED",
+      "SPEC_REUSE_SINGLE='$SPEC_ASSIGNED'",
+      "SPEC_REUSE_DOUBLE=\"$SPEC_ASSIGNED\"",
+      "SPEC_REUSE_CURVES=${SPEC_ASSIGNED}"
+    ], {
+      "SPEC_ASSIGNED": "assigned",
+      "SPEC_REUSE_DIRECT": "$SPEC_ASSIGNED",
+      "SPEC_REUSE_SINGLE": "$SPEC_ASSIGNED",
+      "SPEC_REUSE_DOUBLE": "$SPEC_ASSIGNED",
+      "SPEC_REUSE_CURVES": "assigned"
+    }))
+  })
 })
 
 function p(input: Buffer|string|string[], output: unknown) {
