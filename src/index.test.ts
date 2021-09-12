@@ -34,8 +34,8 @@ describe(parse.name, () => {
     it(...p("$SPEC_LEADING_DOLLAR=l$"           , {"$SPEC_LEADING_DOLLAR": "l$"}))
     it(...p("1SPEC_LEADING_DIGIT=1"             , {"1SPEC_LEADING_DIGIT": "1"}))
     it(...p("=SPEC_LEADING_EQ=WARN"             , {}))
+    it.skip(...p("SPEC_UNQUOTED=\" #WARN"            , {}))
     it.skip(...p('"SPEC_ESCAPE": "\""'               , {"SPEC_ESCAPE": "\""}))
-    // SPEC_UNQUOTED=" #WARN
   })
 
   describe("Not standard names", () => {
@@ -53,14 +53,16 @@ describe(parse.name, () => {
       "SPEC_REUSE_SINGLE='$SPEC_ASSIGNED'",
       "SPEC_REUSE_DOUBLE=\"$SPEC_ASSIGNED\"",
       "SPEC_REUSE_CURVES=${SPEC_ASSIGNED}",
-      "SPEC_REUSE_EXPR=${SPEC_ASSIGNED} is ${SPEC_ASSIGNED}"
+      "SPEC_REUSE_EXPR=${SPEC_ASSIGNED} is ${SPEC_ASSIGNED}",
+      "SPEC_REUSE_EXPR_2=${X} is not ${SPEC_ASSIGNED}"
     ], {
       "SPEC_ASSIGNED": "assigned",
       "SPEC_REUSE_DIRECT": "$SPEC_ASSIGNED",
       "SPEC_REUSE_SINGLE": "$SPEC_ASSIGNED",
       "SPEC_REUSE_DOUBLE": "$SPEC_ASSIGNED",
       "SPEC_REUSE_CURVES": "assigned",
-      "SPEC_REUSE_EXPR": "assigned is assigned"
+      "SPEC_REUSE_EXPR": "assigned is assigned",
+      "SPEC_REUSE_EXPR_2": " is not assigned",
     }))
   })
 

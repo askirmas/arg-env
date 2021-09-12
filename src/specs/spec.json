@@ -34,6 +34,7 @@
   "SPEC_REUSE_DIRECT": "$SPEC_ASSIGNED",
   "SPEC_REUSE_DOUBLE": "$SPEC_ASSIGNED",
   "SPEC_REUSE_EXPR": "assigned is assigned",
+  "SPEC_REUSE_EXPR_2": " is not assigned",
   "SPEC_REUSE_SINGLE": "$SPEC_ASSIGNED",
   "SPEC_SINGLE": "single",
   "SPEC_SPACE": "abc def",
