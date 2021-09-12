@@ -1,3 +1,5 @@
+import type { Env } from "./types"
+
 const argStart = 2
 , argPrefix = "--env-file="
 , {"length": argPrefixLength} = argPrefix
@@ -52,7 +54,7 @@ function fromArgs<T extends boolean>(
 /**
  * @todo Consider calculation as in compose.yml
  */
-function fromPackageEnv(env: Record<string, string|undefined|null>) {
+function fromPackageEnv(env: Env) {
   const collected: string[] = []
 
   let i = 0

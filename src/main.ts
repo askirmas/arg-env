@@ -5,22 +5,29 @@ import {
 import {
   parse
 } from "./parse"
+import type { Env } from "./types"
+
+type Reader = (path: string) => string | Buffer
 
 export {
   main
 }
 
 function main(
-  env: Record<string, string|undefined|null>,
+  env: Env,
   argv: string[],
-  reader: (path: string) => string | Buffer
+  reader: Reader
 ) {
-  const files = fromPackageEnv(env)
-  // CONSIDER not collecting array
-  .concat(
-    fromArgs(argv, true)
-  )
-  , {length} = files
+  assigner(env, fromArgs(argv, true), reader)
+  assigner(env, fromPackageEnv(env), reader)
+}
+
+function assigner(
+  env: Env,
+  files: string[],
+  reader: Reader
+) {
+  const {length} = files
 
   for (let i = length; i--;) {
     const envPatch = parse(reader(files[i]))
