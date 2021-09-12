@@ -8,9 +8,9 @@ export {
   fromPackageEnv
 }
 
-function fromArgs(
+function fromArgs<T extends boolean>(
   argv: typeof process["argv"],
-  deleteThem: boolean
+  deleteThem: T
 ) {
   const {length} = argv
   // CONSIDER `Set`
@@ -24,7 +24,7 @@ function fromArgs(
       continue
 
     collected.push(arg.substr(argPrefixLength))
-    indexesToDelete?.push(i)
+    deleteThem && indexesToDelete!.push(i)
   }
 
   const lengthToDelete = indexesToDelete?.length
@@ -52,7 +52,7 @@ function fromArgs(
 /**
  * @todo Consider calculation as in compose.yml
  */
-function fromPackageEnv(env: typeof process["env"]) {
+function fromPackageEnv(env: Record<string, string|undefined|null>) {
   const collected: string[] = []
 
   let i = 0
