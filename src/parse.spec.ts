@@ -1,7 +1,7 @@
 import { parse as dotenvParse } from "dotenv"
 import dotenvExpand from "dotenv-expand"
 import { readFileSync } from "fs"
-import { parse } from "."
+import { parse } from "./parse"
 
 const dotenvPath = "./docker/.env"
 , dotenvContent = `${readFileSync(dotenvPath)}`
