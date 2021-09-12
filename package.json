@@ -8,6 +8,7 @@
     "output": "ts-node-script output.ts",
     "dev": "npm run jest -- --watch --coverage=false",
     "test": "npm run jest",
+    "pretest": "jest --clearCache",
     "jest": "jest --config=jest.config.json --runInBand"
   },
   "keywords": [],

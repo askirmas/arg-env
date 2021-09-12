@@ -2,7 +2,7 @@ type RegExpGroups<Groups extends string> = RegExpExecArray & {groups: Record<Gro
 
 const parser = /^\s*([^\s=]+)=(?<quote>['"]?)(?<value>.*)(\k<quote>)/gm
 , commentsStripper = /\s#.*/
-, exprParse = /\$\{([^\}]+)\}/
+, exprParse = /\$\{([^\}]+)\}/g
 
 export {
   parse
