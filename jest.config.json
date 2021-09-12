@@ -18,5 +18,8 @@
   "preset": "ts-jest",
   "testEnvironment": "node",
   "verbose": true,
-  "bail": 1
+  "bail": 1,
+  "testPathIgnorePatterns": [
+    "/__e2e__/"
+  ]
 }

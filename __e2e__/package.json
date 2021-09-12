@@ -1,0 +1,21 @@
+{
+  "name": "arg-env_e2e",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "run": "node --require=arg-env index --env-file=1.env --env-file=2.env",
+    "test": "jest",
+    "pretest": "npm install"
+  },
+  "env_file": [
+    "3.env",
+    "./4.env"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "arg-env": "file:../package",
+    "jest": "file:../node_modules/jest"
+  }
+}

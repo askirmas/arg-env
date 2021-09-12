@@ -6,10 +6,15 @@
     "declaration": true,
     "declarationDir": "types",
     "outDir": "dist",
-    "tsBuildInfoFile": ".tsbuildinfo"
+    "diagnostics": true,
+    "listEmittedFiles": true
+  },
+  "buildOptions": {
+    "incremental": false,
+    "verbose": true
   },
   "include": [
-    "src/*.ts"
+    "./src/*.ts"
   ],
   "exclude": [
     "**/*.test.ts",

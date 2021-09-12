@@ -13,11 +13,12 @@ describe(main.name, () => {
       "npm_package_env_file_1": "npm1",
       "OVERRIDE": "false"
     }
-
+    , argv = ["node", "script", "--env-file=arg0", "--env-file=arg1"]
     main(
       env,
-      ["node", "script", "--env-file=arg0", "--env-file=arg1"],
-      k => files[k]
+      argv,
+      k => files[k],
+      true
     )
 
     expect(env).toStrictEqual({
@@ -28,5 +29,8 @@ describe(main.name, () => {
       "ARG1": "Loaded",
       "OVERRIDE": "false"
     })
+    expect(argv).toStrictEqual([
+      "node", "script"
+    ])
   })
 })

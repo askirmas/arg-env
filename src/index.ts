@@ -4,5 +4,6 @@ import { main } from "./main"
 main(
   process.env,
   process.argv,
-  readFileSync
+  readFileSync,
+  false
 )

@@ -4,16 +4,20 @@
   "description": "",
   "scripts": {
     "setup": "./setup.sh",
+    "dev": "npm run jest -- --watch --coverage=false",
     "build": "npm run compile",
     "prebuild": "./prebuild.sh",
-    "compile": "rm -rf dist; tsc --project tsconfig.build.json",
-    "output": "ts-node-script output.ts",
-    "dev": "npm run jest -- --watch --coverage=false",
+    "postbuild": "npm run e2e",
+    "compile": "tsc --project tsconfig.build.json",
+    "precompile": "exit 0; rm -rf dist types",
+    "postcompile": "./postcompile.sh",
+    "e2e": "cd __e2e__ && npm run test",
     "test": "npm run jest",
     "pretest": "jest --clearCache",
     "jest": "jest --config=jest.config.json --runInBand",
-    "release": "np",
-    "cli": "node --require=./arg-env --max-old-space-size=256 ./arg-env --env-file=\"xxx yyy\""
+    "prejest": "npm run precompile",
+    "output": "ts-node-script output.ts",
+    "release": "np"
   },
   "keywords": [],
   "bugs": {
@@ -48,5 +52,5 @@
     "types"
   ],
   "types": "types",
-  "main": "dist"
+  "main": "dist/index.js"
 }

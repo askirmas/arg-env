@@ -15,9 +15,10 @@ export {
 function main(
   env: Env,
   argv: string[],
-  reader: Reader
+  reader: Reader,
+  deleteArgs: boolean
 ) {
-  assigner(env, fromArgs(argv, true), reader)
+  assigner(env, fromArgs(argv, deleteArgs), reader)
   assigner(env, fromPackageEnv(env), reader)
 }
 
