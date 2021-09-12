@@ -2,7 +2,7 @@ type RegExpGroups<Groups extends string> = RegExpExecArray & {groups: Record<Gro
 
 const parser = /^\s*([^\s=]+)=(?<quote>['"]?)(?<value>.*)(\k<quote>)/gm
 , commentsStripper = /\s#.*/
-, exprParse = /\$\{([^\}]+)\}/g
+, exprParse = /\$\{([^\}]+?)(:-([^\}]*))?\}/g
 
 export {
   parse
@@ -14,6 +14,10 @@ function parse<K extends string>(
   // TODO Line
   const source = typeof src === "string" ? src : src.toString()
   , $return = {} as Record<string, string>
+  , replacer = (_: string, variable: string, __: string, $default = "") =>
+    variable in $return
+    ? $return[variable]
+    : $default
 
   let parsed: ReturnType<RegExp["exec"]>
 
@@ -24,9 +28,7 @@ function parse<K extends string>(
 
     $return[key] = value
     .replace(commentsStripper, "")
-    .replace(exprParse, (_, variable: string) => {
-      return variable in $return ? $return[variable] : ""
-    })
+    .replace(exprParse, replacer)
   }
 
   return $return

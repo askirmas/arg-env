@@ -47,7 +47,7 @@ describe(parse.name, () => {
   })
 
   describe("Reuse", () => {
-    it(...p([
+    it(...p("Straight", [
       "SPEC_ASSIGNED=assigned",
       "SPEC_REUSE_DIRECT=$SPEC_ASSIGNED",
       "SPEC_REUSE_SINGLE='$SPEC_ASSIGNED'",
@@ -63,11 +63,53 @@ describe(parse.name, () => {
       "SPEC_REUSE_EXPR": "assigned is assigned"
     }))
   })
+
+  describe("Defaults and Errors",() => {
+    it(...p("Done", [
+      "SPEC_ASSIGNED=assigned",
+      // Works
+      "SPEC_DEFAULT_FALSY_0=${SPEC_ASSIGNED:-def}",
+      "SPEC_DEFAULT_FALSY_1=${X:-${SPEC_ASSIGNED}}",
+      // Whatever
+      "SPEC_DEFAULT_UNDEF_0=${SPEC_ASSIGNED-def}",
+      "SPEC_ERROR_FALSY_0=${SPEC_ASSIGNED?def}",
+      "SPEC_DEFAULT_UNDEF_1=${X-${SPEC_ASSIGNED}}",
+      "SPEC_ERROR_UNDEF_1=${X?${SPEC_ASSIGNED}}",
+    ], {
+      "SPEC_ASSIGNED": "assigned",
+      // Works
+      "SPEC_DEFAULT_FALSY_0": "assigned",
+      "SPEC_DEFAULT_FALSY_1": "${SPEC_ASSIGNED}",
+      // Whatever
+      "SPEC_DEFAULT_UNDEF_0": "",
+      "SPEC_ERROR_FALSY_0": "",
+      "SPEC_DEFAULT_UNDEF_1": "}",
+      "SPEC_ERROR_UNDEF_1": "}"
+    }))
+
+    it.skip(...p("Ununderstandable Errors", [
+      "SPEC_ASSIGNED=assigned",
+      "SPEC_ERROR_UNDEF_0=${SPEC_ASSIGNED:?def}",
+      "SPEC_ERROR_FALSY_1=${X:?${SPEC_ASSIGNED}}"
+    ], {
+      "SPEC_ASSIGNED": "assigned",
+      "SPEC_ERROR_UNDEF_0": "${SPEC_ASSIGNED:?def}",
+      "SPEC_ERROR_FALSY_1": "${X:?assigned}"
+    }))
+  })
 })
 
-function p(input: Buffer|string|string[], output: unknown) {
+
+function p(input: Buffer|string|string[], output: unknown): ReturnType<typeof _p>
+function p(title: string, input: Buffer|string|string[], output: unknown): ReturnType<typeof _p>
+function p(...args: any[]) {
+  //@ts-expect-error
+  return _p(...args.reverse())
+}
+
+function _p(output: unknown, input: Buffer|string|string[], title?: string) {
   const arg = $isArray(input) ? input.join("\n") : input
-  return [`${arg}`, () => expect(parse(
+  return [`${title ?? arg}`, () => expect(parse(
     arg
   )).toStrictEqual(output)] as const
 }
