@@ -11,7 +11,7 @@ services:
       - ROOT_CATCH_EXPORT
       - EXPORT_OVERRIDE_ROOT
 
-      - INLINE="environment"
+      - ENV_INLINE="environment"
 
       - INLINE_CATCH_INTERNAL_0=${ENV_INTERNAL_0}
       - INLINE_CATCH_INTERNAL_1=${ENV_INTERNAL_1}
