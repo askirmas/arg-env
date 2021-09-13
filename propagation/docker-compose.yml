@@ -8,8 +8,18 @@ services:
       - ./docker/.env.file2
     environment:
       - ENV_ROOT_1
-      - ENV_ROOT_CATCH_EXPORT
-      - ENV_INLINE="environment"
-      - ENV_INLINE_CATCH_FILE1=${ENV_INTERNAL_FILE1}
-      - ENV_INLINE_CATCH_ROOT2=${ENV_ROOT_2}
-      - ENV_INLINE_CATCH_EXPORT=${ENV_EXPORT}
+      - ROOT_CATCH_EXPORT
+      - OVERRIDE_EXPORT_ROOT
+
+      - INLINE="environment"
+
+      - INLINE_CATCH_INTERNAL_0=${ENV_INTERNAL_0}
+      - INLINE_CATCH_INTERNAL_1=${ENV_INTERNAL_1}
+      - INLINE_CATCH_ROOT2=${ENV_ROOT_2}
+      - INLINE_CATCH_EXPORT=${ENV_EXPORT}
+
+      - OVERRIDE_EXPORT_INLINE=environment
+      - OVERRIDE_ROOT_INLINE=environment
+
+      - OVERRIDE_INLINE_INTERNAL=environment
+      - OVERRIDE_INLINE_DOCKER=environment
