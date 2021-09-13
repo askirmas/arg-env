@@ -8,5 +8,4 @@ ENV OVERRIDE_INTERNAL_DOCKER=docker/Dockerfile
 
 RUN apk update && apk upgrade && apk add bash
 
-# CMD env | grep "_CATCH_"
-CMD env
+CMD env | grep "_" | sort
