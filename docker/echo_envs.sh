@@ -1,5 +1,5 @@
 #!/bin/bash
-# check `compgen -v` and `env` output
+# check `compgen -v` and `env` or `printenv` output
 VARS=(
   'GLOBAL'
   $(cat .env \

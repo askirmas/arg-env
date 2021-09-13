@@ -1,6 +1,7 @@
 import { parse as dotenvParse } from "dotenv"
 import dotenvExpand from "dotenv-expand"
 import { load as dotenvExtendedLoad } from "dotenv-extended"
+import { parse as envfileParse } from "envfile"
 import { readFileSync } from "fs"
 import { parse } from "./parse"
 import specs from "./specs/spec.json"
@@ -78,7 +79,7 @@ it("dotenv-expanded", () => expect(
   ]
 )))
 
-it("doteenv-extended", () => expect(
+it("dotenv-extended", () => expect(
   dotenvExtendedLoad({
     "assignToProcessEnv": true,
     "path": dotenvPath
@@ -109,12 +110,40 @@ it("doteenv-extended", () => expect(
   ]
 )))
 
+it("envfile", () => expect(
+  envfileParse(dotenvContent)
+).toStrictEqual(replaceAndOmit(
+  specs, {
+    "- SPEC_LEADING_DASH": "WARN #ING: Python-dotenv could not parse statement",
+    "SPEC_": "=:",
+    "SPEC_COMMENTED_SPACE": "comment #ed",
+    "SPEC_DEFAULT_FALSY_0": "${SPEC_ASSIGNED:-def}",
+    "SPEC_DEFAULT_FALSY_1": "${X:-${SPEC_ASSIGNED}}",
+    "SPEC_DEFAULT_UNDEF_0": "${SPEC_ASSIGNED-def}",
+    "SPEC_DEFAULT_UNDEF_1": "${X-${SPEC_ASSIGNED}}",
+    "SPEC_DOUBLE": "\"double\"",
+    "SPEC_ERROR_FALSY_0": "${SPEC_ASSIGNED?def}",
+    "SPEC_ERROR_UNDEF_1": "${X?${SPEC_ASSIGNED}}",
+    "SPEC_META": "${!SPEC_NAME}",
+    "SPEC_META_2": "$${!SPEC_NAME}",
+    "SPEC_META_3": "${${SPEC_NAME}}",
+    "SPEC_REUSE_CURVES": "${SPEC_ASSIGNED}",
+    "SPEC_REUSE_DOUBLE": "\"$SPEC_ASSIGNED\"",
+    "SPEC_REUSE_EXPR": "${SPEC_ASSIGNED} is ${SPEC_ASSIGNED}",
+    "SPEC_REUSE_EXPR_2": "${X} is not ${SPEC_ASSIGNED}",
+    "SPEC_REUSE_SINGLE": "'$SPEC_ASSIGNED'",
+    "SPEC_SINGLE": "'single'",
+  }, [
+    "SPEC_:"
+  ]
+)))
+
 function replaceAndOmit(source: Record<string, string>, replacement: Record<string, string>, omitKeys: string[]) {
   const $return = {...source}
 
   for (const key in replacement) {
-    if (!(key in $return))
-      throw Error(`Already no "${key}"`)
+    // if (!(key in $return))
+    //   throw Error(`Already no "${key}"`)
 
     const value = replacement[key]
 
