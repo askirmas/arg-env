@@ -13,7 +13,7 @@
     "postcompile": "./postcompile.sh",
     "e2e": "cd __e2e__ && npm run test",
     "test": "npm run jest",
-    "pretest": "jest --clearCache",
+    "pretest": "jest --clearCache && cd src/specs && ./get.sh",
     "jest": "jest --config=jest.config.json --runInBand",
     "prejest": "npm run precompile",
     "output": "ts-node-script output.ts",

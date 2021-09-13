@@ -24,25 +24,25 @@ it("dotenv", () => expect(
   specs, {
     "SPEC_COMMENTED_SPACE": "comment #ed",
 
-    "SPEC_REUSE_CURVES": "${SPEC_ASSIGNED}",
-    "SPEC_REUSE_EXPR": "${SPEC_ASSIGNED} is ${SPEC_ASSIGNED}",
-    "SPEC_REUSE_EXPR_2": "${X} is not ${SPEC_ASSIGNED}",
+    "SPEC_REUSE_CURVES": "${SPEC_REUSE_ASSIGNED}",
+    "SPEC_REUSE_EXPR": "${SPEC_REUSE_ASSIGNED} is ${SPEC_REUSE_ASSIGNED}",
+    "SPEC_REUSE_EXPR_2": "${X} is not ${SPEC_REUSE_ASSIGNED}",
 
-    "SPEC_DEFAULT_FALSY_0": "${SPEC_ASSIGNED:-def}",
-    "SPEC_DEFAULT_FALSY_1": "${X:-${SPEC_ASSIGNED}}",
-    "SPEC_DEFAULT_UNDEF_0": "${SPEC_ASSIGNED-def}",
-    "SPEC_DEFAULT_UNDEF_1": "${X-${SPEC_ASSIGNED}}",
-    "SPEC_ERROR_FALSY_0": "${SPEC_ASSIGNED?def}",
-    "SPEC_ERROR_UNDEF_1": "${X?${SPEC_ASSIGNED}}",
+    "SPEC_DEFAULT_FALSY_0": "${SPEC_REUSE_ASSIGNED:-def}",
+    "SPEC_DEFAULT_FALSY_1": "${X:-${SPEC_REUSE_ASSIGNED}}",
+    "SPEC_DEFAULT_UNDEF_0": "${SPEC_REUSE_ASSIGNED-def}",
+    "SPEC_DEFAULT_UNDEF_1": "${X-${SPEC_REUSE_ASSIGNED}}",
+    "SPEC_ERROR_FALSY_0": "${SPEC_REUSE_ASSIGNED?def}",
+    "SPEC_ERROR_UNDEF_1": "${X?${SPEC_REUSE_ASSIGNED}}",
 
-    "SPEC_META": "${!SPEC_NAME}",
-    "SPEC_META_2": "$${!SPEC_NAME}",
-    "SPEC_META_3": "${${SPEC_NAME}}",
+    "SPEC_META_1": "${!SPEC_META_}",
+    "SPEC_META_2": "$${!SPEC_META_}",
+    "SPEC_META_3": "${${SPEC_META_}}",
   }, [
-    "$SPEC_LEADING_DOLLAR",
-    "SPEC_:",
-    "SPEC_@",
-    "SPEC_\\"
+    "$SPEC_WEIRD_LEADING_DOLLAR",
+    "SPEC_WEIRD_:",
+    "SPEC_WEIRD_@",
+    "SPEC_WEIRD_\\"
   ]
 )))
 
@@ -50,6 +50,8 @@ it("dotenv-expanded", () => expect(
   dotenvExpand({"parsed": dotenvParse(dotenvContent)}).parsed
 ).toStrictEqual(replaceAndOmit(
   specs, {
+    "SPEC_VALUE_BASH": "'bash'",
+
     "SPEC_COMMENTED_SPACE": "comment #ed",
 
     "SPEC_REUSE_SINGLE": "assigned",
@@ -63,19 +65,18 @@ it("dotenv-expanded", () => expect(
     "SPEC_ERROR_FALSY_0": "assigned?def}",
     "SPEC_ERROR_UNDEF_1": "?assigned}",
 
-    "SPEC_DOUBLE_DOLLAR": "$",
-    "SPEC_DOUBLE_DOLLAR_2": "$assigned",
-    "SPEC_BASH": "'bash'",
-    "SPEC_SUBSHELL": "(echo 1)",
+    "SPEC_WEIRD_DOUBLE_DOLLAR": "$",
+    "SPEC_WEIRD_DOUBLE_DOLLAR_2": "$assigned",
+    "SPEC_WEIRD_SUBSHELL": "(echo 1)",
 
-    "SPEC_META": "!SPEC_NAME}",
-    "SPEC_META_2": "$!SPEC_NAME}",
-    "SPEC_META_3": "SPEC_DEST}",
+    "SPEC_META_1": "!SPEC_META_}",
+    "SPEC_META_2": "$!SPEC_META_}",
+    "SPEC_META_3": "SPEC_REUSE_ASSIGNED}",
   }, [
-    "$SPEC_LEADING_DOLLAR",
-    "SPEC_:",
-    "SPEC_@",
-    "SPEC_\\"
+    "$SPEC_WEIRD_LEADING_DOLLAR",
+    "SPEC_WEIRD_:",
+    "SPEC_WEIRD_@",
+    "SPEC_WEIRD_\\"
   ]
 )))
 
@@ -88,25 +89,25 @@ it("dotenv-extended", () => expect(
   specs, {
     "SPEC_COMMENTED_SPACE": "comment #ed",
 
-    "SPEC_REUSE_CURVES": "${SPEC_ASSIGNED}",
-    "SPEC_REUSE_EXPR": "${SPEC_ASSIGNED} is ${SPEC_ASSIGNED}",
-    "SPEC_REUSE_EXPR_2": "${X} is not ${SPEC_ASSIGNED}",
+    "SPEC_REUSE_CURVES": "${SPEC_REUSE_ASSIGNED}",
+    "SPEC_REUSE_EXPR": "${SPEC_REUSE_ASSIGNED} is ${SPEC_REUSE_ASSIGNED}",
+    "SPEC_REUSE_EXPR_2": "${X} is not ${SPEC_REUSE_ASSIGNED}",
 
-    "SPEC_DEFAULT_FALSY_0": "${SPEC_ASSIGNED:-def}",
-    "SPEC_DEFAULT_FALSY_1": "${X:-${SPEC_ASSIGNED}}",
-    "SPEC_DEFAULT_UNDEF_0": "${SPEC_ASSIGNED-def}",
-    "SPEC_DEFAULT_UNDEF_1": "${X-${SPEC_ASSIGNED}}",
-    "SPEC_ERROR_FALSY_0": "${SPEC_ASSIGNED?def}",
-    "SPEC_ERROR_UNDEF_1": "${X?${SPEC_ASSIGNED}}",
+    "SPEC_DEFAULT_FALSY_0": "${SPEC_REUSE_ASSIGNED:-def}",
+    "SPEC_DEFAULT_FALSY_1": "${X:-${SPEC_REUSE_ASSIGNED}}",
+    "SPEC_DEFAULT_UNDEF_0": "${SPEC_REUSE_ASSIGNED-def}",
+    "SPEC_DEFAULT_UNDEF_1": "${X-${SPEC_REUSE_ASSIGNED}}",
+    "SPEC_ERROR_FALSY_0": "${SPEC_REUSE_ASSIGNED?def}",
+    "SPEC_ERROR_UNDEF_1": "${X?${SPEC_REUSE_ASSIGNED}}",
 
-    "SPEC_META": "${!SPEC_NAME}",
-    "SPEC_META_2": "$${!SPEC_NAME}",
-    "SPEC_META_3": "${${SPEC_NAME}}",
+    "SPEC_META_1": "${!SPEC_META_}",
+    "SPEC_META_2": "$${!SPEC_META_}",
+    "SPEC_META_3": "${${SPEC_META_}}",
   }, [
-    "$SPEC_LEADING_DOLLAR",
-    "SPEC_:",
-    "SPEC_@",
-    "SPEC_\\"
+    "$SPEC_WEIRD_LEADING_DOLLAR",
+    "SPEC_WEIRD_:",
+    "SPEC_WEIRD_@",
+    "SPEC_WEIRD_\\"
   ]
 )))
 
@@ -114,32 +115,32 @@ it("envfile", () => expect(
   envfileParse(dotenvContent)
 ).toStrictEqual(replaceAndOmit(
   specs, {
-    "SPEC_SINGLE": "'single'",
-    "SPEC_DOUBLE": "\"double\"",
+    "SPEC_VALUE_SINGLE": "'single'",
+    "SPEC_VALUE_DOUBLE": "\"double\"",
 
     "SPEC_COMMENTED_SPACE": "comment #ed",
 
-    "SPEC_DEFAULT_FALSY_0": "${SPEC_ASSIGNED:-def}",
-    "SPEC_DEFAULT_FALSY_1": "${X:-${SPEC_ASSIGNED}}",
-    "SPEC_DEFAULT_UNDEF_0": "${SPEC_ASSIGNED-def}",
-    "SPEC_DEFAULT_UNDEF_1": "${X-${SPEC_ASSIGNED}}",
-    "SPEC_ERROR_FALSY_0": "${SPEC_ASSIGNED?def}",
-    "SPEC_ERROR_UNDEF_1": "${X?${SPEC_ASSIGNED}}",
+    "SPEC_DEFAULT_FALSY_0": "${SPEC_REUSE_ASSIGNED:-def}",
+    "SPEC_DEFAULT_FALSY_1": "${X:-${SPEC_REUSE_ASSIGNED}}",
+    "SPEC_DEFAULT_UNDEF_0": "${SPEC_REUSE_ASSIGNED-def}",
+    "SPEC_DEFAULT_UNDEF_1": "${X-${SPEC_REUSE_ASSIGNED}}",
+    "SPEC_ERROR_FALSY_0": "${SPEC_REUSE_ASSIGNED?def}",
+    "SPEC_ERROR_UNDEF_1": "${X?${SPEC_REUSE_ASSIGNED}}",
 
-    "SPEC_REUSE_CURVES": "${SPEC_ASSIGNED}",
-    "SPEC_REUSE_DOUBLE": "\"$SPEC_ASSIGNED\"",
-    "SPEC_REUSE_EXPR": "${SPEC_ASSIGNED} is ${SPEC_ASSIGNED}",
-    "SPEC_REUSE_EXPR_2": "${X} is not ${SPEC_ASSIGNED}",
-    "SPEC_REUSE_SINGLE": "'$SPEC_ASSIGNED'",
+    "SPEC_REUSE_CURVES": "${SPEC_REUSE_ASSIGNED}",
+    "SPEC_REUSE_DOUBLE": "\"$SPEC_REUSE_ASSIGNED\"",
+    "SPEC_REUSE_EXPR": "${SPEC_REUSE_ASSIGNED} is ${SPEC_REUSE_ASSIGNED}",
+    "SPEC_REUSE_EXPR_2": "${X} is not ${SPEC_REUSE_ASSIGNED}",
+    "SPEC_REUSE_SINGLE": "'$SPEC_REUSE_ASSIGNED'",
 
-    "SPEC_": "=:",
+    "SPEC_WEIRD_": "=:",
 
-    "- SPEC_LEADING_DASH": "WARN #ING: Python-dotenv could not parse statement",
-    "SPEC_META": "${!SPEC_NAME}",
-    "SPEC_META_2": "$${!SPEC_NAME}",
-    "SPEC_META_3": "${${SPEC_NAME}}",
+    "- SPEC_WEIRD_LEADING_DASH": "WARN #ING: Python-dotenv could not parse statement",
+    "SPEC_META_1": "${!SPEC_META_}",
+    "SPEC_META_2": "$${!SPEC_META_}",
+    "SPEC_META_3": "${${SPEC_META_}}",
   }, [
-    "SPEC_:"
+    "SPEC_WEIRD_:"
   ]
 )))
 
