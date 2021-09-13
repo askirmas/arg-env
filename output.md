@@ -1,8 +1,8 @@
 [To Readme](./README.md)
 
-Docker version 20.10.6, build 370c289
+Docker version 20.10.8, build 3967b7d
 
-docker-compose version 1.29.1, build c34c88b2
+docker-compose version 1.29.2, build 5becea4c
 
 Darwin 20.6.0
 

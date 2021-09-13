@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "run": "node --require=arg-env index --env-file=1.env --env-file=2.env",
+    "run": "node --require=arg-env script.js --env-file=1.env --env-file=2.env",
     "test": "jest",
     "pretest": "npm install"
   },

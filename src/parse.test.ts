@@ -34,8 +34,8 @@ describe(parse.name, () => {
     it(...p("$SPEC_LEADING_DOLLAR=l$"           , {"$SPEC_LEADING_DOLLAR": "l$"}))
     it(...p("1SPEC_LEADING_DIGIT=1"             , {"1SPEC_LEADING_DIGIT": "1"}))
     it(...p("=SPEC_LEADING_EQ=WARN"             , {}))
-    it.skip(...p("SPEC_UNQUOTED=\" #WARN"            , {}))
-    it.skip(...p('"SPEC_ESCAPE": "\""'               , {"SPEC_ESCAPE": "\""}))
+    it.skip(...p("SPEC_UNQUOTED=\" #WARN"       , {}))
+    it.skip(...p('"SPEC_ESCAPE": "\""'          , {"SPEC_ESCAPE": "\""}))
   })
 
   describe("Not standard names", () => {

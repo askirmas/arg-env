@@ -114,25 +114,30 @@ it("envfile", () => expect(
   envfileParse(dotenvContent)
 ).toStrictEqual(replaceAndOmit(
   specs, {
-    "- SPEC_LEADING_DASH": "WARN #ING: Python-dotenv could not parse statement",
-    "SPEC_": "=:",
+    "SPEC_SINGLE": "'single'",
+    "SPEC_DOUBLE": "\"double\"",
+
     "SPEC_COMMENTED_SPACE": "comment #ed",
+
     "SPEC_DEFAULT_FALSY_0": "${SPEC_ASSIGNED:-def}",
     "SPEC_DEFAULT_FALSY_1": "${X:-${SPEC_ASSIGNED}}",
     "SPEC_DEFAULT_UNDEF_0": "${SPEC_ASSIGNED-def}",
     "SPEC_DEFAULT_UNDEF_1": "${X-${SPEC_ASSIGNED}}",
-    "SPEC_DOUBLE": "\"double\"",
     "SPEC_ERROR_FALSY_0": "${SPEC_ASSIGNED?def}",
     "SPEC_ERROR_UNDEF_1": "${X?${SPEC_ASSIGNED}}",
-    "SPEC_META": "${!SPEC_NAME}",
-    "SPEC_META_2": "$${!SPEC_NAME}",
-    "SPEC_META_3": "${${SPEC_NAME}}",
+
     "SPEC_REUSE_CURVES": "${SPEC_ASSIGNED}",
     "SPEC_REUSE_DOUBLE": "\"$SPEC_ASSIGNED\"",
     "SPEC_REUSE_EXPR": "${SPEC_ASSIGNED} is ${SPEC_ASSIGNED}",
     "SPEC_REUSE_EXPR_2": "${X} is not ${SPEC_ASSIGNED}",
     "SPEC_REUSE_SINGLE": "'$SPEC_ASSIGNED'",
-    "SPEC_SINGLE": "'single'",
+
+    "SPEC_": "=:",
+
+    "- SPEC_LEADING_DASH": "WARN #ING: Python-dotenv could not parse statement",
+    "SPEC_META": "${!SPEC_NAME}",
+    "SPEC_META_2": "$${!SPEC_NAME}",
+    "SPEC_META_3": "${${SPEC_NAME}}",
   }, [
     "SPEC_:"
   ]
