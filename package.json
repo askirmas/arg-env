@@ -21,7 +21,7 @@
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/askirmas/env_file/labels/bug"
+    "url": "https://github.com/askirmas/arg-env/labels/bug"
   },
   "author": "Andrii Kirmas <kirmas@phystech.edu>",
   "license": "MIT",

@@ -24,7 +24,7 @@ services:
       - INLINE_CATCH_ROOT_2=${ENV_ROOT_2}  #NB
       - INLINE_CATCH_EXPORT_2=${ENV_EXPORT_2} #NB
 
-      - ENV_INLINE="environment"
+      - ENV_INLINE=environment
 
       - INLINE_CATCH_DOCKER=${ENV_DOCKER}
       - INLINE_CATCH_EXPORT=${ENV_EXPORT}
@@ -34,10 +34,10 @@ services:
       - INLINE_CATCH_ROOT=${ENV_ROOT}
       - INLINE_CATCH_RUN=${ENV_RUN}
 
-      - DOCKER_OVERRIDE_INLINE="environment"
-      - EXPORT_OVERRIDE_INLINE="environment"
+      - DOCKER_OVERRIDE_INLINE=environment
+      - EXPORT_OVERRIDE_INLINE=environment
 
-      - INLINE_OVERRIDE_INTERNAL_1="environment"
-      - INLINE_OVERRIDE_INTERNAL_2="environment"
-      - INLINE_OVERRIDE_ROOT="environment"
-      - INLINE_OVERRIDE_RUN="environment"
+      - INLINE_OVERRIDE_INTERNAL_1=environment
+      - INLINE_OVERRIDE_INTERNAL_2=environment
+      - INLINE_OVERRIDE_ROOT=environment
+      - INLINE_OVERRIDE_RUN=environment

@@ -3,15 +3,15 @@ services:
     build:
       context: /Users/kirmasy/code/dotenv/propagation/docker
     environment:
-      DOCKER_OVERRIDE_INLINE: '"environment"'
+      DOCKER_OVERRIDE_INLINE: environment
       DOCKER_OVERRIDE_INTERNAL_1: docker/.env.file1
       DOCKER_OVERRIDE_INTERNAL_2: docker/.env.file2
       DOCKER_OVERRIDE_ROOT: .env
-      ENV_INLINE: '"environment"'
+      ENV_INLINE: environment
       ENV_INTERNAL1: docker/.env.file1
       ENV_INTERNAL2: docker/.env.file2
       ENV_ROOT: .env
-      EXPORT_OVERRIDE_INLINE: '"environment"'
+      EXPORT_OVERRIDE_INLINE: environment
       EXPORT_OVERRIDE_INTERNAL_1: docker/.env.file1
       EXPORT_OVERRIDE_INTERNAL_2: docker/.env.file2
       EXPORT_OVERRIDE_ROOT: global
@@ -23,10 +23,10 @@ services:
       INLINE_CATCH_ROOT: .env
       INLINE_CATCH_ROOT_2: .env
       INLINE_CATCH_RUN: run
-      INLINE_OVERRIDE_INTERNAL_1: '"environment"'
-      INLINE_OVERRIDE_INTERNAL_2: '"environment"'
-      INLINE_OVERRIDE_ROOT: '"environment"'
-      INLINE_OVERRIDE_RUN: '"environment"'
+      INLINE_OVERRIDE_INTERNAL_1: environment
+      INLINE_OVERRIDE_INTERNAL_2: environment
+      INLINE_OVERRIDE_ROOT: environment
+      INLINE_OVERRIDE_RUN: environment
       INTERNAL_1_CATCH_DOCKER: ''
       INTERNAL_1_CATCH_EXPORT: global
       INTERNAL_1_CATCH_INLINE: ''
