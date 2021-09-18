@@ -4,7 +4,7 @@ import {
   envPath,
   eol,
   outputDir
-} from "./config"
+} from "../../config"
 
 type AssocCell = string|undefined|null
 type AssocRecord = Record<string, AssocCell>
