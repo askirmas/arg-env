@@ -1,3 +1,6 @@
-FROM alpine:3
+FROM node:16.9.0-alpine3.13
 
-CMD env | grep "SPEC_" | sort
+WORKDIR /app
+COPY get.js .
+
+CMD NODE_ENV=production node get.js

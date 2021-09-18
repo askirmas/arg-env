@@ -53,11 +53,13 @@
     "SPEC_WEIRD_UNQUOTED=": "\" unq"
   },
   "Dockerfile": {
-    "FROM alpine:3=": "",
-    "CMD env | grep \"SPEC_\" | sort=": ""
+    "FROM node:16.9.0-alpine3.13=": "",
+    "WORKDIR /app=": "",
+    "COPY get.js .=": "",
+    "CMD NODE_ENV=": "production node get.js"
   },
   "Dockerfile.injected": {
-    "FROM alpine:3=": "",
+    "FROM node:16.9.0-alpine3.13=": "",
     "ENV SPEC_VALUE_=": "",
     "ENV SPEC_VALUE_EMPTY=": "",
     "ENV SPEC_VALUE_DIRECT=": "direct",
@@ -113,7 +115,13 @@
     "ENV SPEC_META_2=": "$${!SPEC_META_}",
     "ENV SPEC_META_3=": "${${SPEC_META_}}",
     "ENV SPEC_WEIRD_UNQUOTED=": "\" unq",
-    "CMD env | grep \"SPEC_\" | sort=": ""
+    "WORKDIR /app=": "",
+    "COPY get.js .=": "",
+    "CMD NODE_ENV=": "production node get.js"
+  },
+  "get.js": {
+    "console.log(JSON.stringify(main(), null, 2))=": "",
+    "function main() {=": ""
   },
   "shell.env": {
     "SPEC_VALUE_=": "",

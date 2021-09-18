@@ -1,4 +1,4 @@
-// NB COPYPASTE!1
+// NB COPYPASTE!
 console.log(JSON.stringify(main(), null, 2))
 
 function main() {

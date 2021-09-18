@@ -1,4 +1,7 @@
 #!/bin/bash
+rm -rf ../result
+mkdir ../result
+
 ### <vars value=export id=EXPORT prefix=export/>
 
 # --build-arg
@@ -9,7 +12,7 @@ docker-compose build envs_propagation
 docker-compose run --rm \
 ### <vars id=RUN prefix=-e postfix=\ />
 ### <vars id=EXPORT prefix=-e postfix=\ />
-envs_propagation > ../result.env
+envs_propagation > ../result/result.json
 
 ### <vars type=run value=run id=RUN/>
-docker-compose config > ../result.yml
+docker-compose config > ../result/result.yml

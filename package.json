@@ -19,7 +19,7 @@
     "release": "np",
     "research": "npm run research/syntax && npm run research/propagation",
     "research/syntax": "cd ./research/syntax && rm -rf output && ts-node-script ./index.ts && ./run.sh && ./output_md-start.sh && ts-node-script ./output.ts",
-    "research/propagation": "rm -rf ./research/propagation/output && ts-node-script ./research/propagation/index.ts && cd ./research/propagation/output && bash get.sh"
+    "research/propagation": "rm -rf ./research/propagation/output && ts-node-script ./research/propagation/index.ts && cd ./research/propagation/output && cp ../template/docker/get.js docker/get.js && bash run.sh"
   },
   "keywords": [],
   "bugs": {

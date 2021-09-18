@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 const {config} = require("dotenv")
 , expand = require("dotenv-expand")
-, {assign: $assign, entries: $entries} = Object
+, {assign: $assign} = Object
 
 if (!module.parent)
-  console.log(main())
+  console.log(JSON.stringify(main(), null, 2))
 
 function main() {
   const collected = {}
@@ -15,7 +15,5 @@ function main() {
     $assign(collected, expand(config({"path": argv[i]})).parsed)
   }
 
-  return $entries(collected)
-  .map(([key, value]) => `${key}=${value}`)
-  .join("\n")
+  return collected
 }

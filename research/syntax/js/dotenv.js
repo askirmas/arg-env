@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 const {config} = require("dotenv")
-, {assign: $assign, entries: $entries} = Object
+, {assign: $assign} = Object
 
 if (!module.parent)
-  console.log(main())
+  console.log(JSON.stringify(main(), null, 2))
 
 function main() {
   const collected = {}
@@ -13,7 +13,5 @@ function main() {
   for (let i = 2; i < argv.length; i++)
     $assign(collected, config({"path": argv[i]}).parsed)
 
-  return $entries(collected)
-  .map(([key, value]) => `${key}=${value}`)
-  .join("\n")
+  return collected
 }

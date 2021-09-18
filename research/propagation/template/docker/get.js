@@ -1,4 +1,4 @@
-// NB COPYPASTE!1
+// NB COPYPASTE!
 console.log(JSON.stringify(main(), null, 2))
 
 function main() {
@@ -7,8 +7,8 @@ function main() {
   , keys = []
 
   for (const key in env) {
-    if (!key.includes("SPEC_"))
-      continue
+    // if (!key.includes("SPEC_"))
+    //   continue
 
     collected[key] = env[key]
     keys.push(key)

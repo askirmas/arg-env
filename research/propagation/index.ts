@@ -12,7 +12,7 @@ type Files<ID extends string = string> = {[id in ID]: {
 
 const files: Files = {
   "EXPORT": {
-    "path": "get.sh",
+    "path": "run.sh",
     "id": "EXPORT",
   },
   "RUN": {
