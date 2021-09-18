@@ -1,0 +1,5 @@
+FROM alpine:3
+
+### <vars prefix=ENV type=env_file />
+
+CMD env | grep "SPEC_" | sort

@@ -1,7 +1,6 @@
 import { execSync } from "child_process"
 import { appendFileSync, readFileSync, writeFileSync } from "fs"
 import {
-  envPath,
   eol,
   outputDir
 } from "../../config"
@@ -30,7 +29,7 @@ function main() {
 function collect() {
   const map: AssocTable = {}
   , files = lining(execSync(`find ${outputDir} -type f`))
-  .concat(envPath)
+  // TODO .concat("input.env")
   .sort()
 
   for (let i = 0; i < files.length; i++) {

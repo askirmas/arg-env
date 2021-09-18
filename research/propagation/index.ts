@@ -1,21 +1,16 @@
 import {
-  createReadStream,
-  existsSync,
-  mkdirSync,
-  PathLike, promises, writeFileSync
-} from "fs"
-import { dirname } from "path"
-import { createInterface } from "readline"
+  appenderSync,
+  arr2line,
+  createLineReader,
+  templateLine
+} from "../utils"
 
 type Files<ID extends string = string> = {[id in ID]: {
   "path": string|false
   "id": ID
 }}
 
-const {
-  appendFile: $appendFile
-} = promises
-, files: Files = {
+const files: Files = {
   "EXPORT": {
     "path": "get.sh",
     "id": "EXPORT",
@@ -67,68 +62,37 @@ async function main() {
     if (!path)
       continue
 
-    const outputFile = `${outputRoot}${path}`
-    , outputDir = dirname(outputFile)
-
-    existsSync(outputDir) || mkdirSync(outputDir, {"recursive": true})
-    writeFileSync(outputFile, "")
+    const append = appenderSync(`${outputRoot}${path}`)
 
     for await (const line of createLineReader(`${templateRoot}${path}`)) {
-      const templ = /^(?<indentation>\s*)### <vars\s+(?<options>.*)\/>/.exec(line)?.groups
+      const templ = templateLine<"id"|"value"|"prefix"|"postfix">(line)
 
       if (!templ) {
-        if (line.includes('### <vars '))
-          throw Error(`Fix RegExp! "${line}"`)
-
-        await $appendFile(outputFile, `${line}\n`)
+        await append(line, "\n")
         continue
       }
 
       const {
         indentation,
-        options
-      } = templ
-      , kvParser = /(?<key>[^\s]+)=(?<value>[^\s]+)/g
-      , opts: Record<string, string> = {}
-
-      let kv: undefined|Record<string, string>
-
-      while (kv = kvParser.exec(options)?.groups)
-        opts[kv["key"]] = kv["value"]
-
-      const {
         id,
         value,
         prefix,
         postfix
-      } = opts
+      } = templ
       , valueStr = value ? `=${value}` : ""
 
-      await $appendFile(outputFile,
+      await append(
         arr2line(indentation, prefix, `ENV_${id}${valueStr}`, postfix)
       )
 
       for (const key in files) {
         if (key === id)
           continue
-        await $appendFile(outputFile, `${
-          arr2line(indentation, prefix, `${id}_CATCH_${key}${value ? `=\${ENV_${key}}` : ""}`, postfix)
-        }${
+        await append(
+          arr2line(indentation, prefix, `${id}_CATCH_${key}${value ? `=\${ENV_${key}}` : ""}`, postfix),
           arr2line(indentation, prefix, `${[id, key].sort().join("_OVERRIDE_")}${valueStr}`, postfix)
-        }`)
+        )
       }
     }
   }
-}
-
-function arr2line(indentation = "", ...source: string[]) {
-  return `${
-    indentation
-  }${
-    source.filter(x => x).join(" ")
-  }\n`
-}
-
-function createLineReader(path: PathLike) {
-  return createInterface(createReadStream(path))
 }
