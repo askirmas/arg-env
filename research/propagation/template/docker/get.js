@@ -7,8 +7,8 @@ function main() {
   , keys = []
 
   for (const key in env) {
-    // if (!key.includes("SPEC_"))
-    //   continue
+    if (!key.includes("_"))
+      continue
 
     collected[key] = env[key]
     keys.push(key)

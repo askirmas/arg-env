@@ -22,8 +22,6 @@
   "EXPORT_OVERRIDE_INTERNAL_2": "export",
   "EXPORT_OVERRIDE_ROOT": "export",
   "EXPORT_OVERRIDE_RUN": "run",
-  "HOME": "/root",
-  "HOSTNAME": "cd0f06ec1575",
   "INLINE_CATCH_DOCKER": "",
   "INLINE_CATCH_EXPORT": "export",
   "INLINE_CATCH_INTERNAL_1": "",
@@ -53,8 +51,6 @@
   "INTERNAL_2_OVERRIDE_RUN": "run",
   "NODE_ENV": "production",
   "NODE_VERSION": "16.9.0",
-  "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-  "PWD": "/app",
   "ROOT_CATCH_DOCKER": "",
   "ROOT_CATCH_EXPORT": "export",
   "ROOT_CATCH_INLINE": "",
@@ -68,7 +64,5 @@
   "RUN_CATCH_INTERNAL_1": "",
   "RUN_CATCH_INTERNAL_2": "",
   "RUN_CATCH_ROOT": "",
-  "SHLVL": "2",
-  "TERM": "xterm",
   "YARN_VERSION": "1.22.5"
 }
