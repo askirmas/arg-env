@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  envs_propagation:
+    build:
+      context: ./docker
+    env_file:
+      - ./docker/.file1.env
+      - ./docker/.file2.env
+    environment:
+      ### <vars id=ROOT prefix=-/>
+      ### <vars id=INLINE prefix=- value=environment/>

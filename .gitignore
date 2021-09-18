@@ -1,3 +1,7 @@
+types
+package
+output
+
 # Logs
 logs
 *.log
@@ -80,8 +84,6 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
-types
-package
 
 # Gatsby files
 .cache/

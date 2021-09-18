@@ -17,7 +17,8 @@
     "jest": "jest --config=jest.config.json --runInBand",
     "prejest": "npm run precompile",
     "output": "ts-node-script output.ts",
-    "release": "np"
+    "release": "np",
+    "propagation": "rm -rf ./propagation/output && ts-node-script ./propagation/index.ts && cd ./propagation/output && bash get.sh"
   },
   "keywords": [],
   "bugs": {
