@@ -1,4 +1,4 @@
 #!/bin/bash
-npm run research && \
-npm run build
+npm run research \
+&& npm run build
 # && git add .
