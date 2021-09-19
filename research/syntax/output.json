@@ -123,6 +123,7 @@
     "console.log(JSON.stringify(main(), null, 2))=": "",
     "function main() {=": ""
   },
+  "input.env": {},
   "shell.env": {
     "SPEC_VALUE_=": "",
     "SPEC_VALUE_EMPTY=": "",

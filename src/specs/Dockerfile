@@ -1,1 +1,0 @@
-../../research/syntax/template/docker/Dockerfile

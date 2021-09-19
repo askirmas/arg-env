@@ -1,4 +1,6 @@
 #!/bin/bash
+set -x
+
 rm -rf ../result
 mkdir ../result
 
@@ -16,3 +18,5 @@ envs_propagation > ../result/result.json
 
 ### <vars type=run value=run id=RUN/>
 docker-compose config > ../result/result.yml
+
+set +x

@@ -1,4 +1,6 @@
 #!/bin/bash
+set -x
+
 rm -rf result
 mkdir result
 
@@ -51,3 +53,5 @@ cd ..
 cd ..
 ./js/dotenv.js output/shell.env > "result/dotenv.json"
 ./js/dotenv-expand.js docker-compose/.env output/shell.env > "result/dotenv_expanded.json"
+
+set +x

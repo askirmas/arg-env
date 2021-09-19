@@ -15,7 +15,9 @@ async function main() {
     "gitignore": true,
     "cwd": templatesDir
   })
-  , vars = await readMd(`${__dirname}/data.md`)
+  , vars = await readMd(`${__dirname}/input.md`)
+
+  await appenderSync(`${__dirname}/output/input.env`)(...vars[""])
 
   for (const file of files) {
     const outputFile = `${__dirname}/output/${file}`
@@ -62,7 +64,12 @@ async function main() {
 
 async function readMd(path: PathLike) {
   const reader = createLineReader(path)
-  , $return: Record<string, Record<string, string>> = {}
+  //@ts-expect-error
+  , $return: {
+    //@ts-expect-error
+    "": string[]
+    [x: string]: Record<string, string> //string[] | boolean
+  } = {"": [] as string[]}
 
   let headers: undefined|string[]
 
@@ -112,6 +119,7 @@ async function readMd(path: PathLike) {
           break
 
         key = trimmed
+        $return[""].push(trimmed)
         continue
       }
 
