@@ -154,7 +154,7 @@
   "shell.sh": {
     "set -a=": "",
     "source ./shell.env=": "",
-    "set +a=": "",
-    "env | grep \"SPEC_\" | sort=": ""
+    "node ../../../src/specs/get.js=": "",
+    "set +a=": ""
   }
 }

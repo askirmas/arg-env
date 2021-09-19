@@ -9,9 +9,9 @@ cd output
 
 # Scripts stuff
 
-bash shell.sh > ../result/bash.env
-sh shell.sh > ../result/sh.env
-zsh shell.sh > ../result/zsh.env
+bash shell.sh > ../result/bash.json
+sh shell.sh > ../result/sh.json
+zsh shell.sh > ../result/zsh.json
 
 # Run dockers
 
