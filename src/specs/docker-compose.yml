@@ -6,4 +6,4 @@ services:
       # https://github.com/docker/compose/issues/7397
       dockerfile: ../../research/syntax/template/docker/Dockerfile
     env_file:
-      - .docker.env
+      - input.env

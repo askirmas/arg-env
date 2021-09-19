@@ -17,9 +17,9 @@
     "jest": "jest --config=jest.config.json --runInBand",
     "prejest": "npm run precompile",
     "release": "np",
-    "research": "npm run research/syntax && npm run research/propagation && npm run research/override",
+    "research": "npm run research/syntax && npm run research/closure && npm run research/override",
     "research/syntax": "cd ./research/syntax && rm -rf output && ts-node-script ./index.ts && ./run.sh && ./output_md-start.sh && ts-node-script ./output.ts",
-    "research/propagation": "rm -rf ./research/propagation/output && ts-node-script ./research/propagation/index.ts && cd ./research/propagation/output && cp ../template/docker/get.js docker/get.js && bash run.sh",
+    "research/closure": "rm -rf ./research/closure/output && ts-node-script ./research/closure/index.ts && cd ./research/closure/output && cp ../template/docker/get.js docker/get.js && bash run.sh",
     "research/override": "rm -rf ./research/override/output && ts-node-script ./research/override/index.ts && cd ./research/override/output && cp ../template/docker/get.js docker/get.js && bash run.sh"
   },
   "keywords": [],
