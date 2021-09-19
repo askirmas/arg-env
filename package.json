@@ -76,6 +76,9 @@
     "dist",
     "types"
   ],
+  "engines": {
+    "node": ">=12 <17"
+  },
   "types": "types",
   "main": "dist/index.js"
 }

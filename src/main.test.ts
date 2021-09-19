@@ -10,8 +10,8 @@ describe(main.name, () => {
       "arg1": "ARG1=Loaded",
     }
     , env = {
-      "npm_package_env_file_0": "npm0",
-      "npm_package_env_file_1": "npm1",
+      "npm_package_config_env_file_0": "npm0",
+      "npm_package_config_env_file_1": "npm1",
       "OVERWRITE": "false"
     }
     , argv = ["node", "script", "--env-file=arg0", "--env-file=arg1"]
@@ -24,8 +24,8 @@ describe(main.name, () => {
     )
 
     expect(env).toStrictEqual({
-      "npm_package_env_file_0": "npm0",
-      "npm_package_env_file_1": "npm1",
+      "npm_package_config_env_file_0": "npm0",
+      "npm_package_config_env_file_1": "npm1",
       "NPM1": "Loaded",
       "ARG0": "Loaded",
       "ARG1": "Loaded",

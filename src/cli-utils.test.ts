@@ -49,36 +49,36 @@ describe(fromArgs.name, () => {
 
 describe(fromPackageEnv.name, () => {
   it("gap", () => expect(fromPackageEnv({
-    "npm_package_env_file_3": "d",
-    "npm_package_env_file_0": "a",
-    "npm_package_env_file_1": "b",
+    "npm_package_config_env_file_3": "d",
+    "npm_package_config_env_file_0": "a",
+    "npm_package_config_env_file_1": "b",
   })).toStrictEqual([
     "a",
     "b",
   ]))
 
   it("letter", () => expect(fromPackageEnv({
-    "npm_package_env_file_0": "a",
-    "npm_package_env_file_1": "b",
-    "npm_package_env_file_a": "g",
+    "npm_package_config_env_file_0": "a",
+    "npm_package_config_env_file_1": "b",
+    "npm_package_config_env_file_a": "g",
   })).toStrictEqual([
     "a",
     "b",
   ]))
 
   it("long list", () => expect(fromPackageEnv({
-    "npm_package_env_file_2": "c",
-    "npm_package_env_file_3": "d",
-    "npm_package_env_file_0": "a",
-    "npm_package_env_file_1": "b",
-    "npm_package_env_file_6": "g",
-    "npm_package_env_file_7": "h",
-    "npm_package_env_file_4": "e",
-    "npm_package_env_file_5": "f",
-    "npm_package_env_file_11": "m",
-    "npm_package_env_file_10": "l",
-    "npm_package_env_file_8": "",
-    "npm_package_env_file_9": "k"
+    "npm_package_config_env_file_2": "c",
+    "npm_package_config_env_file_3": "d",
+    "npm_package_config_env_file_0": "a",
+    "npm_package_config_env_file_1": "b",
+    "npm_package_config_env_file_6": "g",
+    "npm_package_config_env_file_7": "h",
+    "npm_package_config_env_file_4": "e",
+    "npm_package_config_env_file_5": "f",
+    "npm_package_config_env_file_11": "m",
+    "npm_package_config_env_file_10": "l",
+    "npm_package_config_env_file_8": "",
+    "npm_package_config_env_file_9": "k"
   })).toStrictEqual([
     "a",
     "b",
@@ -92,5 +92,11 @@ describe(fromPackageEnv.name, () => {
     "k",
     "l",
     "m"
+  ]))
+
+  it("npm 7", () => expect(fromPackageEnv({
+    "npm_package_config_env_file": "1\n\n2\n\n3"
+  })).toStrictEqual([
+    "1", "2", "3"
   ]))
 })

@@ -1,7 +1,13 @@
 const argStart = 2
 , argPrefix = "--env-file="
 , {"length": argPrefixLength} = argPrefix
-, packagePrefix = "npm_package_env_file_"
+, packagePrefix = "npm_package_config_env_file"
+
+/**
+ * @see https://github.com/npm/cli/issues/3775
+ * @see https://github.com/npm/run-script/issues/37
+ */
+const npm7delimiter = "\n\n"
 
 export {
   fromArgs,
@@ -53,15 +59,15 @@ function fromArgs<T extends boolean>(
  * @todo Consider calculation as in compose.yml
  */
 function fromPackageEnv(env: Env) {
-  const collected: string[] = []
+  const collected: string[] = env[packagePrefix]?.split(npm7delimiter) ?? []
 
   let i = 0
-  , key = `${packagePrefix}${i}`
+  , key = `${packagePrefix}_${i}`
 
   while (key in env) {
     collected[i] = env[key]!
     i++
-    key = `${packagePrefix}${i}`
+    key = `${packagePrefix}_${i}`
   }
 
   return collected

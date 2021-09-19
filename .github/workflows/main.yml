@@ -27,7 +27,7 @@ jobs:
           # - 10 #TODO Omit `.flat()` in tests
           - 12
           - 14
-          # - 16 # TODO npm has another naming strategy for package.json
+          - 16
         # os: [ubuntu-latest, windows-latest, macos-latest]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:

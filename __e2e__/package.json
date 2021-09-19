@@ -7,10 +7,12 @@
     "test": "jest",
     "pretest": "npm install"
   },
-  "env_file": [
-    "3.env",
-    "./4.env"
-  ],
+  "config": {
+    "env_file": [
+      "3.env",
+      "./4.env"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

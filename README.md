@@ -33,12 +33,16 @@ node --require=arg-env index.js --env-file=1.env --env-file=2.env
 
 ### [package.json](https://github.com/askirmas/arg-env/blob/main/__e2e__/package.json#L10-L13)
 
+*See [npm docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#config)*
+
 ```json
 {
-	"env_file": [
-    "3.env",
-    "./4.env"
-  ],
+  "config": {
+    "env_file": [
+      "3.env",
+      "./4.env"
+    ]
+  },
   "scripts": {
     "start:dev": "node --require=arg-env index.js"
   }
