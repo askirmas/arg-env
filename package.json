@@ -1,6 +1,6 @@
 {
   "name": "arg-env",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "homepage": "https://github.com/askirmas/arg-env",
   "scripts": {
@@ -24,13 +24,21 @@
     "research/overwrite": "rm -rf ./research/overwrite/output && ts-node-script ./research/overwrite/index.ts && cd ./research/overwrite/output && cp ../template/docker/get.js docker/get.js && bash run.sh"
   },
   "keywords": [
-    ".env", "env", "dotenv",
-    "environment", "variables",
+    ".env",
+    "env",
+    "dotenv",
+    "environment",
+    "variables",
     "node",
     "config",
-    "docker", "compose",
-    "cli", "command", "line", "arguments",
-    "env_file", "env-file"
+    "docker",
+    "compose",
+    "cli",
+    "command",
+    "line",
+    "arguments",
+    "env_file",
+    "env-file"
   ],
   "bugs": {
     "url": "https://github.com/askirmas/arg-env/labels/bug"
