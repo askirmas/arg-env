@@ -1,6 +1,6 @@
 FROM node:16.9.0-alpine3.13
 
-### <vars prefix=ENV type=env_file id=DOCKER value=docker/>
+### <vars prefix=ENV type=Dockerfile id=DOCKER value=docker/>
 
 WORKDIR /app
 COPY get.js .

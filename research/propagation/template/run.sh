@@ -1,5 +1,6 @@
 #!/bin/bash
 set -x
+set -e
 
 rm -rf ../result
 mkdir ../result
@@ -20,3 +21,4 @@ envs_propagation > ../result/result.json
 docker-compose config > ../result/result.yml
 
 set +x
+set +e

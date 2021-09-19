@@ -1,10 +1,11 @@
 #!/bin/bash
 set -x
+set -e
 
 rm -rf result
 mkdir result
 
-cd output || exit 1
+cd output
 
 # Scripts stuff
 
@@ -14,19 +15,19 @@ zsh shell.sh > ../result/zsh.env
 
 # Run dockers
 
-cd docker || exit 1
+cd docker
 
-docker build --tag docker-env_file --file Dockerfile . && \
+docker build --tag docker-env_file --file Dockerfile .
 docker run --rm --env-file=../docker.env docker-env_file > "../../result/docker-env_file.json"
 
-docker build --tag docker-env --file Dockerfile.injected . && \
+docker build --tag docker-env --file Dockerfile.injected .
 docker run --rm docker-env > "../../result/docker-env.json"
 
 cd ..
 
 # Run services
 
-cd compose || exit 1
+cd compose
 
 docker-compose build environment && \
 docker-compose run --rm environment > "../../result/compose-environment.json"
@@ -55,3 +56,4 @@ cd ..
 ./js/dotenv-expand.js docker-compose/.env output/shell.env > "result/dotenv_expanded.json"
 
 set +x
+set +e
