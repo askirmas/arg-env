@@ -70,7 +70,8 @@
   "np": {
     "yarn": false,
     "branch": "main",
-    "2fa": false
+    "2fa": false,
+    "test-script": "build"
   },
   "files": [
     "dist",
