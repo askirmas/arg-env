@@ -49,7 +49,7 @@ async function main() {
         if (key === id)
           continue
         await append(
-          arr2line(indentation, prefix, `${[id, key].sort().join("_OVERRIDE_")}${valueStr}`, postfix)
+          arr2line(indentation, prefix, `${[id, key].sort().join("_OVERWRITE_")}${valueStr}`, postfix)
         )
       }
     }

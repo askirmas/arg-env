@@ -116,9 +116,9 @@ describe(parse.name, () => {
     }))
 
     it("Reserved", () => expect(parse(
-      "OVERRIDE=me",
+      "OVERWRITE=me",
       undefined,
-      {"OVERRIDE": undefined},
+      {"OVERWRITE": undefined},
     )).toStrictEqual({
     }))
   })
