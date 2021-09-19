@@ -60,20 +60,20 @@
 | SPEC_REUSE_DOUBLE="$SPEC_REUSE_ASSIGNED"                     | +     | +        | +           | +          |
 | SPEC_REUSE_CURVES=${SPEC_REUSE_ASSIGNED}                     | +     | +        | +           | +          |
 | SPEC_REUSE_EXPR_SINGLE_1='${SPEC_REUSE_ASSIGNED} is ${SPEC_REUSE_ASSIGNED}' | +     | +        | +           | +          |
-| SPEC_REUSE_EXPR_SINGLE_2='${X} is not ${SPEC_REUSE_ASSIGNED}' | +     | +        | +           | +          |
+| SPEC_REUSE_EXPR_SINGLE_2='${SPEC_UNDEFINED} is not ${SPEC_REUSE_ASSIGNED}' | +     | +        | +           | +          |
 | SPEC_REUSE_EXPR_DOUBLE_1="${SPEC_REUSE_ASSIGNED} is ${SPEC_REUSE_ASSIGNED}" | +     | +        | +           | +          |
-| SPEC_REUSE_EXPR_DOUBLE_2="${X} is not ${SPEC_REUSE_ASSIGNED}" | +     | +        | +           | +          |
+| SPEC_REUSE_EXPR_DOUBLE_2="${SPEC_UNDEFINED} is not ${SPEC_REUSE_ASSIGNED}" | +     | +        | +           | +          |
 |                                                              |       |          |             |            |
 | # Defaults and Errors                                        |       |          |             |            |
 | SPEC_DEFAULT_FALSY_0=${SPEC_REUSE_ASSIGNED:-def}             | +     | +        | +           | +          |
 | SPEC_DEFAULT_UNDEF_0=${SPEC_REUSE_ASSIGNED-def}              | +     | +        | +           | -          |
-| SPEC_DEFAULT_FALSY_1=${X:-${SPEC_REUSE_ASSIGNED}}            | +     | +        | +           | +          |
-| SPEC_DEFAULT_UNDEF_1=${X-${SPEC_REUSE_ASSIGNED}}             | +     | +        | +           | -          |
+| SPEC_DEFAULT_FALSY_1=${SPEC_UNDEFINED:-${SPEC_REUSE_ASSIGNED}} | +     | +        | +           | +          |
+| SPEC_DEFAULT_UNDEF_1=${SPEC_UNDEFINED-${SPEC_REUSE_ASSIGNED}} | +     | +        | +           | -          |
 |                                                              |       |          |             |            |
 | SPEC_ERROR_FALSY_0=${SPEC_REUSE_ASSIGNED?def}                | +     | +        | -           | +          |
 | SPEC_ERROR_UNDEF_0=${SPEC_REUSE_ASSIGNED:?def}               | +     | +        | -           | +          |
-| SPEC_ERROR_FALSY_1=${X:?${SPEC_REUSE_ASSIGNED}}              | -     | +        | -           | -          |
-| SPEC_ERROR_UNDEF_1=${X?${SPEC_REUSE_ASSIGNED}}               | -     | +        | -           | -          |
+| SPEC_ERROR_FALSY_1=${SPEC_UNDEFINED:?${SPEC_REUSE_ASSIGNED}} | -     | +        | -           | -          |
+| SPEC_ERROR_UNDEF_1=${SPEC_UNDEFINED?${SPEC_REUSE_ASSIGNED}}  | -     | +        | -           | -          |
 |                                                              |       |          |             |            |
 | # Meta naming                                                |       |          |             |            |
 | SPEC_META_=SPEC_REUSE_ASSIGNED                               | +     | +        | +           | -          |
