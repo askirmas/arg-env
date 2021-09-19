@@ -4,6 +4,7 @@ import {
   eol,
   outputDir
 } from "../../config"
+import { join } from "../utils"
 
 type AssocCell = string|undefined|null
 type AssocRecord = Record<string, AssocCell>
@@ -99,7 +100,7 @@ function array2md(array: AssocCell[][]) {
       table.push(row2md(new Array(array[0].length).fill("-")))
   }
 
-  return table.join("\n")
+  return join(table)
 }
 
 function row2md(arr: AssocCell[]) {

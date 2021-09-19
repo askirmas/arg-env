@@ -13,7 +13,7 @@ const dotenvPath = "./src/specs/.docker.env"
 afterEach(() => process.env = originalEnvs)
 
 it("my",() => expect(
-  parse(dotenvContent)
+  parse(dotenvContent, {})
 ).toStrictEqual(
   specs
 ))

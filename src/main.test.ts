@@ -1,3 +1,4 @@
+import { join } from "../research/utils"
 import { main } from "./main"
 
 describe(main.name, () => {
@@ -35,7 +36,7 @@ describe(main.name, () => {
     ])
   })
 
-  it("TDD isolation", () => {
+  it("TDD Isolation and propagation", () => {
     const env = {
       "global": "global"
     }
@@ -81,7 +82,3 @@ describe(main.name, () => {
     })
   })
 })
-
-function join(...s: string[]) {
-  return s.join("\n")
-}

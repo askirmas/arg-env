@@ -22,7 +22,8 @@ export {
   kvParser,
   createLineReader,
   appenderSync,
-  arr2line
+  arr2line,
+  join
 }
 
 function createLineReader(path: PathLike) {
@@ -69,4 +70,11 @@ function arr2line(indentation = "", ...source: (undefined|string)[]) {
   }${
     source.filter(x => x).join(" ")
   }\n`
+}
+
+
+function join(...lines: Array<Buffer|string|Array<Buffer|string>>) {
+  return lines
+  .flat()
+  .join("\n")
 }

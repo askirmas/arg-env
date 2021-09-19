@@ -9,14 +9,16 @@ export {
 }
 
 function parse<K extends string>(
-  src: Buffer | string
+  src: Buffer | string,
+  scope: Record<string, string>
+  //CONSIDER reserved: Record<string, unknown>
 ): Record<K, string> {
   // TODO Line
   const source = typeof src === "string" ? src : src.toString()
   , $return = {} as Record<string, string>
   , replacer = (_: string, variable: string, __: string, $default = "") =>
-    variable in $return
-    ? $return[variable]
+    variable in scope ? scope[variable]
+    : variable in $return ? $return[variable]
     : $default
 
   let parsed: ReturnType<RegExp["exec"]>
@@ -25,6 +27,9 @@ function parse<K extends string>(
     const {1: key, "groups": {
       value
     }} = parsed as RegExpGroups<"value"|"quote">
+
+    if (key in scope)
+      continue
 
     $return[key] = value
     .replace(commentsStripper, "")

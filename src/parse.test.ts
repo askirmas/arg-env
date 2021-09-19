@@ -1,6 +1,5 @@
+import { join } from "../research/utils"
 import { parse } from "./parse"
-
-const {isArray: $isArray} = Array
 
 describe(parse.name, () => {
   describe("Complex input", () => {
@@ -99,6 +98,22 @@ describe(parse.name, () => {
       "SPEC_ERROR_FALSY_1": "${X:?assigned}"
     }))
   })
+
+  describe("With scope", () => {
+    it("1", () => expect(parse(
+      join(
+        "ME=me",
+        "GLOBAL=me",
+        "FROM_ME=${ME}",
+        "FROM_GLOBAL=${GLOBAL}"
+      ),
+      {"GLOBAL": "global"}
+    )).toStrictEqual({
+      "ME": "me",
+      "FROM_ME": "me",
+      "FROM_GLOBAL": "global"
+    }))
+  })
 })
 
 
@@ -110,8 +125,10 @@ function p(...args: any[]) {
 }
 
 function _p(output: unknown, input: Buffer|string|string[], title?: string) {
-  const arg = $isArray(input) ? input.join("\n") : input
+  const arg = input instanceof Buffer ? input : join(input)
+
   return [`${title ?? arg}`, () => expect(parse(
-    arg
+    arg,
+    {}
   )).toStrictEqual(output)] as const
 }
