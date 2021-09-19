@@ -1,6 +1,6 @@
 # arg-env
 
-Node.js  package to work with `.env` files same as `docker` and `docker-compose`
+Node.js package to work with `.env` files in the same way as docker and docker-compose via `--env-file` or `"env_file"` in package.json
 
 ## Installation
 
