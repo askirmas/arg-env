@@ -20,15 +20,23 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # runs-on: ${{ matrix.os }}
-    # strategy:
-    #     matrix:
-    #         os: [ubuntu-latest, windows-latest, macos-latest]
-    #         node-version: [12.x, 14.x]
+    strategy:
+      matrix:
+        node-version:
+          # - 8 - Too old
+          # - 10 #TODO Omit `.flat()` in tests
+          - 12
+          - 14
+          # - 16 # TODO npm has another naming strategy for package.json
+        # os: [ubuntu-latest, windows-latest, macos-latest]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -36,8 +44,9 @@ jobs:
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
           path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-node-${{ matrix.node-version }}-
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
