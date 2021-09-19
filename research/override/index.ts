@@ -45,15 +45,11 @@ async function main() {
       } = templ
       , valueStr = value ? `=${value}` : ""
 
-      await append(
-        arr2line(indentation, prefix, `ENV_${id}${valueStr}`, postfix)
-      )
-
       for (const key in files) {
         if (key === id)
           continue
         await append(
-          arr2line(indentation, prefix, `${id}_CATCH_${key}${value ? `=\${ENV_${key}}` : ""}`, postfix)
+          arr2line(indentation, prefix, `${[id, key].sort().join("_OVERRIDE_")}${valueStr}`, postfix)
         )
       }
     }
