@@ -8,6 +8,8 @@ import {
 
 type Reader = (path: string) => string | Buffer
 
+const {assign: $assign} = Object
+
 export {
   main
 }
@@ -18,24 +20,44 @@ function main(
   reader: Reader,
   deleteArgs: boolean
 ) {
-  assigner(env, fromArgs(argv, deleteArgs), reader)
-  assigner(env, fromPackageEnv(env), reader)
+  const envPatch: Record<string, unknown> = {}
+
+  assigner(
+    env,
+    fromArgs(argv, deleteArgs),
+    reader,
+    envPatch
+  )
+
+  assigner(
+    env,
+    fromPackageEnv(env),
+    reader,
+    envPatch
+  )
+
+  $assign(env, envPatch)
+
+  return envPatch
 }
 
 function assigner(
   env: Env,
   files: string[],
-  reader: Reader
+  reader: Reader,
+  envPatch: Record<string, unknown>
 ) {
   const {length} = files
 
-  for (let i = length; i--;) {
-    const envPatch = parse(reader(files[i]), undefined, undefined)
+  for (let i = length; i--; )
+    $assign(
+      envPatch,
+      parse(
+        reader(files[i]),
+        env,
+        envPatch
+      )
+    )
 
-    for (const key in envPatch) {
-      if (key in env)
-        continue
-      env[key] = envPatch[key]
-    }
-  }
+  return envPatch
 }

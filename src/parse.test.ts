@@ -122,6 +122,29 @@ describe(parse.name, () => {
     )).toStrictEqual({
     }))
   })
+
+  it("Process.ENV values", () => expect(parse(
+    join(
+      "U=${Undefined}",
+      "N=${Null}",
+      "F=${False}",
+      "Z=${Zero}"
+    ),
+    {
+      "Undefined": undefined,
+      "Null": null,
+      //@ts-expect-error
+      "False": false,
+      //@ts-expect-error
+      "Zero": 0
+    },
+    undefined
+  )).toStrictEqual({
+    "U": "",
+    "N": "",
+    "F": "false",
+    "Z": "0"
+  }))
 })
 
 

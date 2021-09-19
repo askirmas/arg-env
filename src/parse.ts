@@ -10,14 +10,14 @@ export {
 
 function parse<K extends string>(
   src: Buffer | string,
-  scope: undefined | Record<string, string>,
+  scope: undefined | Env,
   reserved: undefined | Record<string, unknown>
 ): Record<K, string> {
   // TODO Line
   const source = typeof src === "string" ? src : src.toString()
   , $return = {} as Record<string, string>
   , replacer = (_: string, variable: string, __: string, $default = "") =>
-    scope && variable in scope ? scope[variable]
+    scope && variable in scope ? scope[variable] ?? $default
     : variable in $return ? $return[variable]
     : $default
 
