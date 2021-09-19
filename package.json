@@ -29,6 +29,8 @@
     "dotenv",
     "environment",
     "variables",
+    "loader",
+    "parser",
     "node",
     "config",
     "docker",
