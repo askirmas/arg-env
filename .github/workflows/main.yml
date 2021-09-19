@@ -24,7 +24,7 @@ jobs:
       matrix:
         node-version:
           # - 8 - Too old
-          # - 10 #TODO Omit `.flat()` in tests
+          - 10
           - 12
           - 14
           - 16

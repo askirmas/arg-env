@@ -77,7 +77,7 @@
     "types"
   ],
   "engines": {
-    "node": ">=12 <17"
+    "node": ">=10 <17"
   },
   "types": "types",
   "main": "dist/index.js"

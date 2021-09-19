@@ -11,9 +11,8 @@ import {
 import { dirname } from "path"
 import { createInterface } from "readline"
 
-const {
-  appendFile: $appendFile
-} = promises
+const {isArray: $isArray} = Array
+, {appendFile: $appendFile} = promises
 , templateParser = /^(?<indentation>\s*)### <vars\s+(?<options>.*)\/>/
 , kvParser = /(?<key>[^\s]+)=(?<value>[^\s]+)/g
 
@@ -75,6 +74,6 @@ function arr2line(indentation = "", ...source: (undefined|string)[]) {
 
 function join(...lines: Array<Buffer|string|Array<Buffer|string>>) {
   return lines
-  .flat()
+  .map(x => $isArray(x) ? x.join("\n") : x)
   .join("\n")
 }
