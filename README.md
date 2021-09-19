@@ -2,6 +2,19 @@
 
 Node.js package to work with `.env` files in the same way as docker and docker-compose via `--env-file` or `"env_file"` in package.json
 
+[![build@ci](https://github.com/askirmas/arg-env/workflows/build/badge.svg)](https://github.com/askirmas/arg-env/actions)
+[![codecov](https://codecov.io/gh/askirmas/arg-env/branch/main/graph/badge.svg?token=MGpavfql7g)](https://codecov.io/gh/askirmas/arg-env)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f6a1ef03e39733e2827c/maintainability)](https://codeclimate.com/github/askirmas/arg-env/maintainability)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/askirmas/arg-env/badges/quality-score.png)](https://scrutinizer-ci.com/g/askirmas/arg-env/)
+[![CodeFactor](https://www.codefactor.io/repository/github/askirmas/arg-env/badge)](https://www.codefactor.io/repository/github/askirmas/arg-env)
+
+<!-- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=askirmas_arg-env&metric=alert_status)](https://sonarcloud.io/dashboard?id=askirmas_arg-env) -->
+<!-- [![DeepScan grade](https://deepscan.io](https://deepscan.io/) -->
+
+[![dependencies Status](https://status.david-dm.org/gh/askirmas/arg-env.svg)](https://david-dm.org/askirmas/arg-env)
+[![version](https://img.shields.io/npm/v/arg-env)](https://www.npmjs.com/package/arg-env)
+[![license](https://img.shields.io/npm/l/arg-env)](https://github.com/askirmas/arg-env/blob/master/LICENSE)
+
 ## Installation
 
 ```bash
