@@ -1,7 +1,7 @@
 services:
   env_file-docker:
     build:
-      context: /Users/kirmasy/code/dotenv/research/syntax/output/docker
+      context: /Users/kirmasy/code/arg-env/research/syntax/output/docker
       dockerfile: Dockerfile
     environment:
       SPEC_COMMENTED_KEY: null
@@ -38,7 +38,7 @@ services:
       SPEC_lowercase: Lowercase
   env_file-shell:
     build:
-      context: /Users/kirmasy/code/dotenv/research/syntax/output/docker
+      context: /Users/kirmasy/code/arg-env/research/syntax/output/docker
       dockerfile: Dockerfile
     environment:
       $$SPEC_WEIRD_LEADING_DOLLAR_1: ld1
@@ -90,7 +90,7 @@ services:
       \$$SPEC_WEIRD_LEADING_DOLLAR_2: ld2
   environment:
     build:
-      context: /Users/kirmasy/code/dotenv/research/syntax/output/docker
+      context: /Users/kirmasy/code/arg-env/research/syntax/output/docker
       dockerfile: Dockerfile
     environment:
       -SPEC_WEIRD_LEADING_DASH: dash1

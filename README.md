@@ -26,9 +26,13 @@ npm install --save-dev arg-env
 In addition, check [the example of usage](https://github.com/askirmas/arg-env/blob/main/__e2e__/script.test.js#L6)
 
 ### [Command-line arguments](https://github.com/askirmas/arg-env/blob/main/__e2e__/package.json#L6)
+*See [Node docs](https://nodejs.org/api/cli.html#cli_r_require_module)*
 
 ```bash
 node --require=arg-env index.js --env-file=1.env --env-file=2.env
+
+# jest
+node -r arg-env node_modules/.bin/jest --env-file=test.env
 ```
 
 ### [package.json](https://github.com/askirmas/arg-env/blob/main/__e2e__/package.json#L10-L13)

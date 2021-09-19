@@ -1,7 +1,7 @@
 services:
   envs_propagation:
     build:
-      context: /Users/kirmasy/code/dotenv/research/overwrite/output/docker
+      context: /Users/kirmasy/code/arg-env/research/overwrite/output/docker
     environment:
       DOCKER_OVERWRITE_INLINE: environment
       DOCKER_OVERWRITE_INTERNAL_1: .file1

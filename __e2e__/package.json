@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "run": "node --require=arg-env script.js --env-file=1.env --env-file=2.env",
-    "test": "jest",
+    "test": "node -r arg-env node_modules/.bin/jest --env-file=1.env --env-file=2.env",
     "pretest": "npm install"
   },
   "config": {

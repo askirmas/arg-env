@@ -1,7 +1,7 @@
 services:
   envs_propagation:
     build:
-      context: /Users/kirmasy/code/dotenv/research/closure/output/docker
+      context: /Users/kirmasy/code/arg-env/research/closure/output/docker
     environment:
       ENV_INLINE: environment
       ENV_INTERNAL_1: .file1
