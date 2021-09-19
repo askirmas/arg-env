@@ -10,14 +10,14 @@ export {
 
 function parse<K extends string>(
   src: Buffer | string,
-  scope: Record<string, string>
-  //CONSIDER reserved: Record<string, unknown>
+  scope: undefined | Record<string, string>,
+  reserved: undefined | Record<string, unknown>
 ): Record<K, string> {
   // TODO Line
   const source = typeof src === "string" ? src : src.toString()
   , $return = {} as Record<string, string>
   , replacer = (_: string, variable: string, __: string, $default = "") =>
-    variable in scope ? scope[variable]
+    scope && variable in scope ? scope[variable]
     : variable in $return ? $return[variable]
     : $default
 
@@ -28,7 +28,10 @@ function parse<K extends string>(
       value
     }} = parsed as RegExpGroups<"value"|"quote">
 
-    if (key in scope)
+    if (
+      reserved && key in reserved
+      || scope && key in scope
+    )
       continue
 
     $return[key] = value

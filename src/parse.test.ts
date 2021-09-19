@@ -99,19 +99,27 @@ describe(parse.name, () => {
     }))
   })
 
-  describe("With scope", () => {
-    it("1", () => expect(parse(
+  describe("Scope, reserved", () => {
+    it("Scope", () => expect(parse(
       join(
         "ME=me",
         "GLOBAL=me",
         "FROM_ME=${ME}",
         "FROM_GLOBAL=${GLOBAL}"
       ),
-      {"GLOBAL": "global"}
+      {"GLOBAL": "global"},
+      undefined
     )).toStrictEqual({
       "ME": "me",
       "FROM_ME": "me",
       "FROM_GLOBAL": "global"
+    }))
+
+    it("Reserved", () => expect(parse(
+      "OVERRIDE=me",
+      undefined,
+      {"OVERRIDE": undefined},
+    )).toStrictEqual({
     }))
   })
 })
@@ -129,6 +137,7 @@ function _p(output: unknown, input: Buffer|string|string[], title?: string) {
 
   return [`${title ?? arg}`, () => expect(parse(
     arg,
-    {}
+    undefined,
+    undefined
   )).toStrictEqual(output)] as const
 }

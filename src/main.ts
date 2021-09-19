@@ -30,7 +30,7 @@ function assigner(
   const {length} = files
 
   for (let i = length; i--;) {
-    const envPatch = parse(reader(files[i]), {})
+    const envPatch = parse(reader(files[i]), undefined, undefined)
 
     for (const key in envPatch) {
       if (key in env)
