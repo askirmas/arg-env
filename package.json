@@ -1,6 +1,6 @@
 {
   "name": "arg-env",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Node.js package to work with `.env` files in the same way as docker and docker-compose via `--env-file` or `\"env_file\"` in package.json",
   "homepage": "https://github.com/askirmas/arg-env",
   "scripts": {
