@@ -4,63 +4,66 @@ Node.js  package to work with `.env` files same as `docker` and `docker-compose`
 
 ## Installation
 
-*<b>NB!</b> I think Node app may control environment variables itself only in development, while in production it‘s control should be derived to appropriate profile tools, but you may have another opinion – it’s up to you.*
-
 ```bash
-npm install --save-dev arg-env 
-# OR
-npm install --save arg-env 
+npm install --save-dev arg-env
 ```
 
 ## Usage
 
-- [Command-line arguments:](https://github.com/askirmas/arg-env/blob/main/__e2e__/package.json#L6)
+In addition, check [the example of usage](https://github.com/askirmas/arg-env/blob/main/__e2e__/script.test.js#L6)
 
-  ```bash
-  node --require=arg-env index.js --env-file=1.env --env-file=2.env
-  ```
-  
-- [package.json:](https://github.com/askirmas/arg-env/blob/main/__e2e__/package.json#L10-L13) *// **NB!** Works if script was launched with `npm` as `docker-compose` and `docker-compose.yml`*
+### [Command-line arguments](https://github.com/askirmas/arg-env/blob/main/__e2e__/package.json#L6)
 
-  ```json
-  {
-  	"env_file": [
-      "3.env",
-      "./4.env"
-    ],
-    "scripts": {...},
-    "dependencies": {...}
-  }
-  ```
-
-[Result:](https://github.com/askirmas/env_file/blob/main/__e2e__/script.test.js#L6)
-
-```javascript
-// index.js
-const {
-  _ARG,
-  _ENV,
-  _IS,
-  _COOL,
-  _1
-} = process.env
-
-console.log(_ARG, _ENV, _IS, _COOL, _1) // arg env is cool !!!!!111
+```bash
+node --require=arg-env index.js --env-file=1.env --env-file=2.env
 ```
 
-If you want only parser, take it with
+### [package.json](https://github.com/askirmas/arg-env/blob/main/__e2e__/package.json#L10-L13)
+
+```json
+{
+	"env_file": [
+    "3.env",
+    "./4.env"
+  ],
+  "scripts": {
+    "start:dev": "node --require=arg-env index.js"
+  }
+}
+```
+
+### Parser only
 
 ```javascript
 import { parse } from "arg-env"
 ```
 
+## Features
+
+<u>*All specifications are taken from output of actual docker run*</u>
+
+### Syntax
+
+- Comments: [`COMMENTED=comment #ed`](https://github.com/askirmas/arg-env/blob/main/src/specs/input.env#19) is resolved to [`comment`](https://github.com/askirmas/arg-env/blob/main/src/specs/spec.json#5)
+- Quote agnostic: [`V1=val`,`V2='val'`,`V3="val"`](https://github.com/askirmas/arg-env/blob/main/src/specs/input.env#L4-L6) are resolved to [`val`](https://github.com/askirmas/arg-env/blob/main/src/specs/spec.json#L27-30)
+- Reuse: [`EXPR=${VAR1} and ${VAR2}`](https://github.com/askirmas/arg-env/blob/main/src/specs/input.env#L51-L52) is resolved to [`value1 and value2`](https://github.com/askirmas/arg-env/blob/main/src/specs/spec.json#L22-L23)
+- Default value: [`DEFAULT=${UNDEFINED:-val}`](https://github.com/askirmas/arg-env/blob/main/src/specs/input.env#L60) is resolved to [`val`](https://github.com/askirmas/arg-env/blob/main/src/specs/spec.json#L8)
+
+### Closure
+
+Files are [independent](https://github.com/askirmas/arg-env/blob/main/src/main.test.ts#L82-83) but [rely](https://github.com/askirmas/arg-env/blob/main/src/main.test.ts#L84-L85) on global environment
+
+### Precedence and overwrite
+
+Files [don’t overwrite](https://github.com/askirmas/arg-env/blob/main/src/main.test.ts#L79) global environment. [Next file takes precedence over previous](https://github.com/askirmas/arg-env/blob/main/src/main.test.ts#L86). In addition, files in package.json has less priority than in command line arguments.
+
 ## Comparison
 
-Other env JS packages hasn't command-line and package interfaces, more-over, didn't behave like `docker`: [see details ./src/parse.spec.ts](https://github.com/askirmas/env_file/blob/master/src/parse.spec.ts). Input is [./src/specs/.docker.env](https://github.com/askirmas/env_file/blob/master/src/specs/.docker.env), output saved in [./src/specs/spec.json](https://github.com/askirmas/env_file/blob/master/src/specs/spec.json) via `./src/specs/get.sh`.
+Other env JS packages hasn't command-line and package interfaces, more-over, didn't behave like `docker`: [see details ./src/parse.spec.ts](https://github.com/askirmas/arg-env/blob/main/src/parse.spec.ts). Input is [./src/specs/input.env](https://github.com/askirmas/arg-env/blob/main/src/specs/input.env), output saved in [./src/specs/spec.json](https://github.com/askirmas/arg-env/blob/main/src/specs/spec.json) via `./src/specs/get.sh`.
 
-| Tool name                                                    | [Quotes](https://github.com/askirmas/env_file/blob/main/src/specs/.docker.env#L2-L9) | [Isolated](https://github.com/askirmas/env_file/blob/main/src/specs/.docker.env#L54) | [Inline comment](https://github.com/askirmas/env_file/blob/main/src/specs/.docker.env#L16-L18) | [Reuse](https://github.com/askirmas/env_file/blob/main/src/specs/.docker.env#L46-L51) | [Default value](https://github.com/askirmas/env_file/blob/main/src/specs/.docker.env#L57-L60) | [Weird names](https://github.com/askirmas/env_file/blob/main/src/specs/.docker.env#L22-L36) | [Error syntax](https://github.com/askirmas/env_file/blob/main/src/specs/.docker.env#L62-L65) | [Var of Var](https://github.com/askirmas/env_file/blob/main/src/specs/.docker.env#L68-L71) |
+| Tool name                                                    | [Quotes](https://github.com/askirmas/arg-env/blob/main/src/specs/.docker.env#L2-L9) | [Isolated](https://github.com/askirmas/arg-env/blob/main/src/specs/.docker.env#L54) | [Inline comment](https://github.com/askirmas/arg-env/blob/main/src/specs/.docker.env#L16-L18) | [Reuse](https://github.com/askirmas/arg-env/blob/main/src/specs/.docker.env#L46-L51) | [Default value](https://github.com/askirmas/arg-env/blob/main/src/specs/.docker.env#L57-L60) | [Weird names](https://github.com/askirmas/arg-env/blob/main/src/specs/.docker.env#L22-L36) | [Error syntax](https://github.com/askirmas/arg-env/blob/main/src/specs/.docker.env#L62-L65) | [Var of Var](https://github.com/askirmas/arg-env/blob/main/src/specs/.docker.env#L68-L71) |
 | ------------------------------------------------------------ | ------ | -------- | -------------- | ----- | ------------- | ----------- | ------------ | ---------- |
-| [docker-compose](https://github.com/askirmas/env_file/blob/master/src/specs/spec.json) | `'`,`"` | Yes      | Yes            | Yes   | Yes           | Yes         | No           | No         |
+| [docker-compose](https://github.com/askirmas/arg-env/blob/main/src/specs/spec.json) | `'`,`"` | Yes      | Yes            | Yes   | Yes           | Yes         | No           | No         |
 | [arg-env](https://npmjs.com/package/arg-env)                 | `'`,`"` | Yes      | Yes            | Yes   | Yes           | Yes         | Not yet      | Not yet    |
 | [dotenv](https://npmjs.com/package/dotenv)                   | `'`,`"` | Yes      | No             | No    | No            | No          | No           | No         |
 | [dotenv-expand](https://npmjs.com/package/dotenv-expand)     | `'`,`"` | No?      | No             | More  | No            | No          | No           | No         |
