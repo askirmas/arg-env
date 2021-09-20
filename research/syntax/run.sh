@@ -46,7 +46,7 @@ docker-compose run --rm env_file-docker > "../../result/compose-env_file-docker.
 #docker compose build env_file
 #docker compose run --rm env_file > "../output/docker compose --env_file"
 
-docker-compose config > "../../result/compose.yml"
+docker-compose config | ../../../yaml2json.js services > "../../result/compose.json"
 
 cd ..
 

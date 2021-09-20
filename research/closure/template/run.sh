@@ -18,7 +18,7 @@ docker-compose run --rm \
 envs_propagation > ../result/result.json
 
 ### <vars type=run value=run id=RUN/>
-docker-compose config > ../result/result.yml
+docker-compose config | ../../yaml2json.js 'services/^/environment' > ../result/result.json
 
 set +x
 set +e
