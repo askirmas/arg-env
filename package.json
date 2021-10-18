@@ -48,6 +48,7 @@
   },
   "author": "Andrii Kirmas <kirmas@phystech.edu>",
   "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/jest": "^27.0.1",

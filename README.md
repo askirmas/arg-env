@@ -1,6 +1,6 @@
 # arg-env
 
-Node.js package to work with `.env` files in the same way as docker and docker-compose via `--env-file` or `"env_file"` in package.json
+Node.js package to work with `.env` files in the same way as [docker](https://docs.docker.com/engine/reference/commandline/run/#options) and [docker-compose](https://docs.docker.com/compose/environment-variables/) via argument `--env-file=…` in CLI, `"env_file": […]` in package.json and environment variables `ENV_FILE_?=…`
 
 [![build@ci](https://github.com/askirmas/arg-env/workflows/build/badge.svg)](https://github.com/askirmas/arg-env/actions)
 [![codecov](https://codecov.io/gh/askirmas/arg-env/branch/main/graph/badge.svg?token=MGpavfql7g)](https://codecov.io/gh/askirmas/arg-env)
