@@ -94,7 +94,10 @@ describe(fromPackageEnv.name, () => {
     "m"
   ]))
 
-  it("npm 7", () => expect(fromPackageEnv({
+  /**
+   * @see https://github.com/npm/cli/issues/3775
+   * @see https://github.com/npm/run-script/issues/37 */
+  it("#2 npm 7", () => expect(fromPackageEnv({
     "npm_package_config_env_file": "1\n\n2\n\n3"
   })).toStrictEqual([
     "1", "2", "3"
