@@ -17,7 +17,7 @@ docker-compose run --rm \
 ### <vars id=EXPORT prefix=-e postfix=\ />
 envs_propagation > ../result/result.json
 
-### <vars type=run value=run id=RUN/>
+### <vars type=run value=run id=RUN postfix=\ />
 docker-compose config | ../../yaml2json.js 'services/^/environment' > ../result/result.json
 
 set +x
