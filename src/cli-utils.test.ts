@@ -17,7 +17,7 @@ describe(fromArgs.name, () => {
   ], false)).toStrictEqual([
   ]))
 
-  it("1", () => expect(fromArgs([
+  it("duplicated", () => expect(fromArgs([
     'bin/node',
     'script',
     '--env-file=xxx yyy',

@@ -1,17 +1,19 @@
 import {
   fromArgs,
+  fromEnv,
   fromPackageEnv
 } from "./cli-utils"
 import {
   parse
 } from "./parse"
 
-type Reader = (path: string) => string | Buffer
+export type Reader = (path: string) => string | Buffer
 
 const {assign: $assign} = Object
 
 export {
-  main
+  main,
+  assigner
 }
 
 function main(
@@ -20,21 +22,22 @@ function main(
   reader: Reader,
   deleteArgs: boolean
 ) {
-  const envPatch: Record<string, unknown> = {}
-
-  assigner(
-    env,
+  // TODO #13
+  const patches = [
+    fromEnv(env),
     fromArgs(argv, deleteArgs),
-    reader,
-    envPatch
-  )
+    fromPackageEnv(env)
+  ]
+  , {length} = patches
+  , envPatch: Record<string, unknown> = {}
 
-  assigner(
-    env,
-    fromPackageEnv(env),
-    reader,
-    envPatch
-  )
+  for (let i = 0; i < length; i++)
+    assigner(
+      env, 
+      patches[i],
+      reader,
+      envPatch
+    )
 
   $assign(env, envPatch)
 
@@ -42,8 +45,8 @@ function main(
 }
 
 function assigner(
-  env: Env,
-  files: string[],
+  env: Readonly<Env>,
+  files: readonly string[],
   reader: Reader,
   envPatch: Record<string, unknown>
 ) {

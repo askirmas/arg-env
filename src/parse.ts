@@ -14,6 +14,7 @@ function parse<K extends string>(
   reserved: undefined | Record<string, unknown>
 ): Record<K, string> {
   // TODO Line
+  // TODO Emit good error for bad `src`
   const source = typeof src === "string" ? src : src.toString()
   , $return = {} as Record<string, string>
   , replacer = (_: string, variable: string, __: string, $default = "") =>

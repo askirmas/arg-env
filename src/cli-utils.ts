@@ -59,7 +59,7 @@ function fromArgs<T extends boolean>(
 /**
  * @todo Consider calculation as in compose.yml
  */
-function fromPackageEnv(env: Env) {
+function fromPackageEnv(env: Readonly<Env>) {
   return fromArrayAsAssoc(
     env,
     packagePrefix,
@@ -67,7 +67,7 @@ function fromPackageEnv(env: Env) {
   )
 }
 
-function fromEnv(env: Env) {
+function fromEnv(env: Readonly<Env>) {
   return fromArrayAsAssoc(
     env,
     envPrefix,
@@ -78,7 +78,7 @@ function fromEnv(env: Env) {
 }
 
 // CONSIDER `collected: Set<string>`
-function fromArrayAsAssoc(env: Env, prefix: string, collected: string[]) {
+function fromArrayAsAssoc(env: Readonly<Env>, prefix: string, collected: string[]) {
   let i = 0
   , key = `${prefix}_${i}`
 

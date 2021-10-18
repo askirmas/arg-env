@@ -2,16 +2,22 @@ import { join } from "../research/utils"
 import { main } from "./main"
 
 describe(main.name, () => {
-  it("1", () => {
+  it("demo", () => {
     const files: Record<string, string> = {
       "npm0": "OVERWRITE=true",
       "npm1": "NPM1=Loaded",
       "arg0": "ARG0=Loaded",
       "arg1": "ARG1=Loaded",
+      "env": "ENV=Loaded",
+      "env0": "ENV0=Loaded",
+      "env1": "ENV1=Loaded"
     }
     , env = {
       "npm_package_config_env_file_0": "npm0",
       "npm_package_config_env_file_1": "npm1",
+      "ENV_FILE": "env",
+      "ENV_FILE_0": "env0",
+      "ENV_FILE_1": "env1",
       "OVERWRITE": "false"
     }
     , argv = ["node", "script", "--env-file=arg0", "--env-file=arg1"]
@@ -24,12 +30,18 @@ describe(main.name, () => {
     )
 
     expect(env).toStrictEqual({
-      "npm_package_config_env_file_0": "npm0",
-      "npm_package_config_env_file_1": "npm1",
       "NPM1": "Loaded",
       "ARG0": "Loaded",
       "ARG1": "Loaded",
-      "OVERWRITE": "false"
+      "ENV": "Loaded",
+      "ENV0": "Loaded",
+      "ENV1": "Loaded",
+      "OVERWRITE": "false",
+      "npm_package_config_env_file_0": "npm0",
+      "npm_package_config_env_file_1": "npm1",
+      "ENV_FILE": "env",
+      "ENV_FILE_0": "env0",
+      "ENV_FILE_1": "env1"
     })
     expect(argv).toStrictEqual([
       "node", "script"
