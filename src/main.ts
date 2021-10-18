@@ -53,6 +53,7 @@ function assigner(
   const {length} = files
 
   for (let i = length; i--; )
+    // NB commutative
     $assign(
       envPatch,
       parse(
