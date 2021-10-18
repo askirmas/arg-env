@@ -6,5 +6,6 @@ main(
   process.env,
   process.argv,
   readFileSync,
+  // TODO #7
   false
 )
