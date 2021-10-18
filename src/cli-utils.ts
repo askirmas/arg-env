@@ -2,16 +2,17 @@ const argStart = 2
 , argPrefix = "--env-file="
 , {"length": argPrefixLength} = argPrefix
 , packagePrefix = "npm_package_config_env_file"
+, envPrefix = "ENV_FILE"
 
 /**
  * @see https://github.com/npm/cli/issues/3775
- * @see https://github.com/npm/run-script/issues/37
- */
+ * @see https://github.com/npm/run-script/issues/37 */
 const npm7delimiter = "\n\n"
 
 export {
   fromArgs,
-  fromPackageEnv
+  fromPackageEnv,
+  fromEnv
 }
 
 function fromArgs<T extends boolean>(
@@ -19,7 +20,7 @@ function fromArgs<T extends boolean>(
   deleteThem: T
 ) {
   const {length} = argv
-  // CONSIDER `Set`
+  // CONSIDER `collected: Set<string>`
   , collected: string[] = []
   , indexesToDelete = deleteThem ? [] as number[] : undefined
 
@@ -59,15 +60,32 @@ function fromArgs<T extends boolean>(
  * @todo Consider calculation as in compose.yml
  */
 function fromPackageEnv(env: Env) {
-  const collected: string[] = env[packagePrefix]?.split(npm7delimiter) ?? []
+  return fromArrayAsAssoc(
+    env,
+    packagePrefix,
+    env[packagePrefix]?.split(npm7delimiter) ?? []
+  )
+}
 
+function fromEnv(env: Env) {
+  return fromArrayAsAssoc(
+    env,
+    envPrefix,
+    envPrefix in env
+    ? [env[envPrefix]!]
+    : []
+  )
+}
+
+// CONSIDER `collected: Set<string>`
+function fromArrayAsAssoc(env: Env, prefix: string, collected: string[]) {
   let i = 0
-  , key = `${packagePrefix}_${i}`
+  , key = `${prefix}_${i}`
 
   while (key in env) {
-    collected[i] = env[key]!
+    collected.push(env[key]!)
     i++
-    key = `${packagePrefix}_${i}`
+    key = `${prefix}_${i}`
   }
 
   return collected

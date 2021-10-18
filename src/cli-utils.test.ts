@@ -1,5 +1,6 @@
 import {
   fromArgs,
+  fromEnv,
   fromPackageEnv
 } from "./cli-utils"
 
@@ -102,4 +103,23 @@ describe(fromPackageEnv.name, () => {
   })).toStrictEqual([
     "1", "2", "3"
   ]))
+})
+
+describe(fromEnv.name, () => {
+  it("ENV_FILE", () => expect(fromEnv({
+    "ENV_FILE": "x"
+  })).toStrictEqual([
+    "x"
+  ]))
+
+  it("ENV_FILE_?", () => expect(fromEnv({
+    "ENV_FILE_0": "x",
+    "ENV_FILE_1": "y",
+    "ENV_FILE_a": "a",
+    "ENV_FILE_2": "z",
+    "ENV_FILE_4": "b",
+  })).toStrictEqual([
+    "x", "y", "z"
+  ]))
+
 })
